@@ -240,3 +240,5 @@ a4纸，上下空2.5cm，左右空3cm
 
 #pagebreak()
 #references("./ref.yml")
+// 想用 Tex Bib 可以按下面这样引用
+// #references("./ref.bib")
