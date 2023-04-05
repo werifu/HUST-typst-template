@@ -4,13 +4,13 @@
 
 ## 什么是 typst
 
-[typst](https://github.com/typst/typst) 是最新最热的标记文本语言，定位与 LaTex 类似，具有极强的排版能力，通过一定的语法写文档，然后生成 pdf 文件。与 LaTex 相比有以下的优势：
+[typst](https://github.com/typst/typst) 是最新最热的标记文本语言，定位与 LaTeX 类似，具有极强的排版能力，通过一定的语法写文档，然后生成 pdf 文件。与 LaTeX 相比有以下的优势：
 
 1. 编译巨快：因为提供增量编译的功能所以在修改后基本能在一秒内编译出 pdf 文件，typst 提供了监听修改自动编译的功能，可以像 Markdown 一样边写边看效果。
 2. 环境搭建简单：原生支持中日韩等非拉丁语言，不用再大量折腾字符兼容问题以及下载好几个 G 的环境。只需要下载命令行程序就能开始编译生成 pdf。
 3. 语法友好：对于普通的排版需求，上手难度跟 Markdown 相当，同时文本源码阅读性高：不会再充斥一堆反斜杠跟花括号
 
-个人观点：跟 Markdown 一样好用，跟 LaTex 一样强大
+个人观点：跟 Markdown 一样好用，跟 LaTeX 一样强大
 
 可以从[这里速通 typst](https://typst.app/docs/tutorial)
 
