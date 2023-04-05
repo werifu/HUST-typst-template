@@ -12,11 +12,22 @@
 
 个人观点：跟 Markdown 一样好用，跟 LaTex 一样强大
 
-可以从[这里速通 typst](https://typst.app/docs/tutorial)，
+可以从[这里速通 typst](https://typst.app/docs/tutorial)
 
 跟 word 比的优势：好用太多了
 
 ## 使用
+
+快速浏览效果：[查看sample.pdf](./sample.pdf)，样例论文源码：[查看sample.typ](./sample.typ)
+
+### 线上编辑
+
+typst 也提供了线上编辑器（类似overleaf），查看本模板：
+https://typst.app/project/rqTPs502DAhLTQctaUmbtn
+
+（ps：浏览器可能没宋体，字体可能不对，请忽略字体）
+
+### 本地编辑
 
 1. 下载对应平台的 typst：https://github.com/typst/typst/releases 记得先看看它的 README
 2. clone 本仓库
