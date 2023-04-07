@@ -60,10 +60,9 @@
   )
 }
 
-#let indent_par(body) = {
-  // 加上元素间间隔大概 2.0em 
+// 两个汉字的缩进
+#let indent() = {
   box(width: 1.8em)
-  body
 }
 
 #let toc() = {
@@ -168,8 +167,9 @@
     set heading(level: 1, numbering: none)
     set align(center)
     set text(weight: "bold", font: heiti, size: 18pt)
-    pad(bottom: 1em, "致　　谢")
-  }
+
+    "致　　谢"
+  } + indent()
 
   
   [= 致谢 <_thx>]
@@ -453,10 +453,12 @@
     set text(weight: "bold", font: heiti, size: 14pt)
     it
   }
+
+  // 首段不缩进，手动加上 box
   show heading: it => {
     set text(weight: "bold", font: heiti, size: 12pt)
-    pad(bottom: 1em, it)
-  }
+    it
+  } + indent()
 
   set text(font: songti, 12pt)
   set par(justify: false, leading: 1.5em, first-line-indent: 2em)
