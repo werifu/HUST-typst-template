@@ -1,6 +1,10 @@
 #let heiti = ("Times New Roman", "Heiti SC", "Heiti TC")
 #let songti = ("Times New Roman", "Songti SC", "Songti TC")
 
+#let indent_par(body) = {
+  box(width: 1.8em)
+  body
+}
 
 #let equation_num(_) = {
   locate(loc => {
@@ -36,7 +40,7 @@
     caption: caption,
     supplement: [公式],
     numbering: equation_num,
-    kind: "equation"
+    kind: "equation",
   )
 }
 
@@ -46,7 +50,7 @@
     caption: caption,
     supplement: [表],
     numbering: table_num,
-    kind: "table"
+    kind: "table",
   )
 }
 
@@ -56,7 +60,7 @@
     caption: caption,
     supplement: [图],
     numbering: image_num,
-    kind: "image"
+    kind: "image",
   )
 }
 
