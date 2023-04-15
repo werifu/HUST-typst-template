@@ -494,10 +494,10 @@
 }
 
 #let tlb_row(r) = {
-	(tlb_cell(r.at(0)), tlb_cell(r.at(1)), tlb_cell(r.at(2)))
+	(..r.map(tlb_cell).flatten())
 }
 
-#let three_line_table(values, column_num) = {
+#let three_line_table(values) = {
 	rect(
 		stroke: (bottom: 1pt, top: 1pt),
 		inset: 0pt,
@@ -507,13 +507,13 @@
 			rows: (auto),
 			// table title
 			grid(
-				columns: column_num,
+				columns: values.at(0).len(),
 				..values.at(0).map(tlb_header).flatten()
 			),
 
 			grid(
-				columns: column_num,
-				..values.slice(2).map(tlb_row).flatten()
+				columns: values.at(0).len(),
+				..values.slice(1).map(tlb_row).flatten()
 			),
 		)
 	)

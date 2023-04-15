@@ -115,7 +115,7 @@ typst 是最新最热的标记文本语言，定位与 LaTeX 类似，具有极�
   three_line_table(
     (
     ("Country List", "Country List", "Country List"),
-    ("Country Name or Area Name", "ISO ALPHA 2 Code", "ISO ALPHA 3"),
+    ("Country Name or Area Name", "ISO ALPHA Code", "ISO ALPHA"),
     ("Afghanistan", "AF", "AFT"),
     ("Aland Islands", "AX", "ALA"),
     ("Albania", "AL", "ALB"),
@@ -123,9 +123,28 @@ typst 是最新最热的标记文本语言，定位与 LaTeX 类似，具有极�
     ("American Samoa", "AS", "ASM"),
     ("Andorra", "AD", "AND"),
     ("Angola", "AP", "AGO"),
-  ), 3),
+  )),
   caption: "三线表示例"
 )
+
+#tbl(
+  three_line_table(
+    (
+    ("Country List", "Country List", "Country List", "Country List"),
+    ("Country Name or Area Name", "ISO ALPHA 2 Code", "ISO ALPHA 3", "8"),
+    ("Afghanistan", "AF", "AFT", "7"),
+    ("Aland Islands", "AX", "ALA", "6"),
+    ("Albania", "AL", "ALB", "5"),
+    ("Algeria", "DZ", "DZA", "4"),
+    ("American Samoa", "AS", "ASM", "3"),
+    ("Andorra", "AD", "AND", "2"),
+    ("Angola", "AP", "AGO", "1"),
+  )),
+  caption: "三线表示例2"
+)
+
+
+
 
 == 公式
 
