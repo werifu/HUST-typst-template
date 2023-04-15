@@ -109,6 +109,24 @@ typst 是最新最热的标记文本语言，定位与 LaTeX 类似，具有极�
   caption: "芝士样表"
 ) <tbl1>
 
+
+
+#tbl(
+  three_line_table(
+    (
+    ("Country List", "Country List", "Country List"),
+    ("Country Name or Area Name", "ISO ALPHA 2 Code", "ISO ALPHA 3"),
+    ("Afghanistan", "AF", "AFT"),
+    ("Aland Islands", "AX", "ALA"),
+    ("Albania", "AL", "ALB"),
+    ("Algeria", "DZ", "DZA"),
+    ("American Samoa", "AS", "ASM"),
+    ("Andorra", "AD", "AND"),
+    ("Angola", "AP", "AGO"),
+  ), 3),
+  caption: "三线表示例"
+)
+
 == 公式
 
 公式用两个\$包裹，但是语法跟 LaTeX 并不一样，如果有大量公式需求那先建议看官网教程，不过typst还比较早期，不排除以后会加入兼容语法的可能。

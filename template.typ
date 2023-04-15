@@ -474,3 +474,48 @@
   body
 }
 
+// 三线表
+#let tlb_header(content) = {
+	set align(center)
+	rect(
+		width: 100%,
+    stroke: (bottom: 1pt),
+		[#content],
+	)
+}
+
+#let tlb_cell(content) = {
+	set align(left)
+	rect(
+		width: 100%,
+		stroke: none,
+		[#content]
+	)
+}
+
+#let tlb_row(r) = {
+	(tlb_cell(r.at(0)), tlb_cell(r.at(1)), tlb_cell(r.at(2)))
+}
+
+#let three_line_table(values, column_num) = {
+	rect(
+		stroke: (bottom: 1pt, top: 1pt),
+		inset: 0pt,
+		outset: 0pt,
+		grid(
+			columns: (auto),
+			rows: (auto),
+			// table title
+			grid(
+				columns: column_num,
+				..values.at(0).map(tlb_header).flatten()
+			),
+
+			grid(
+				columns: column_num,
+				..values.slice(2).map(tlb_row).flatten()
+			),
+		)
+	)
+}
+
