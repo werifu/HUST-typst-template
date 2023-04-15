@@ -475,7 +475,7 @@
 }
 
 // 三线表
-#let tlb_header(content) = {
+#let tlt_header(content) = {
 	set align(center)
 	rect(
 		width: 100%,
@@ -484,7 +484,7 @@
 	)
 }
 
-#let tlb_cell(content) = {
+#let tlt_cell(content) = {
 	set align(left)
 	rect(
 		width: 100%,
@@ -493,8 +493,8 @@
 	)
 }
 
-#let tlb_row(r) = {
-	(..r.map(tlb_cell).flatten())
+#let tlt_row(r) = {
+	(..r.map(tlt_cell).flatten())
 }
 
 #let three_line_table(values) = {
@@ -508,12 +508,12 @@
 			// table title
 			grid(
 				columns: values.at(0).len(),
-				..values.at(0).map(tlb_header).flatten()
+				..values.at(0).map(tlt_header).flatten()
 			),
 
 			grid(
 				columns: values.at(0).len(),
-				..values.slice(1).map(tlb_row).flatten()
+				..values.slice(1).map(tlt_row).flatten()
 			),
 		)
 	)
