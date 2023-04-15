@@ -509,7 +509,7 @@
     grid(
         columns: values.at(0).len(),
         ..values.at(0).map(tlt_header).flatten()
-        ),
+    ),
 
     grid(
         columns: values.at(0).len(),
