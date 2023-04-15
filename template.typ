@@ -503,18 +503,18 @@
     inset: 0pt,
     outset: 0pt,
     grid(
-    columns: (auto),
-    rows: (auto),
-    // table title
-    grid(
+      columns: (auto),
+      rows: (auto),
+      // table title
+      grid(
         columns: values.at(0).len(),
         ..values.at(0).map(tlt_header).flatten()
-    ),
+      ),
 
-    grid(
+      grid(
         columns: values.at(0).len(),
         ..values.slice(1).map(tlt_row).flatten()
-    ),
+      ),
     )
   )
 }
