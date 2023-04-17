@@ -424,10 +424,6 @@
   // 目录
   toc()
 
-  counter(page).update(0)
-
-  pagebreak()
-
   // 正文的页脚
   
   set page(
@@ -470,6 +466,7 @@
     it
     v(5pt)
   }
+  counter(page).update(1)
 
   body
 }
