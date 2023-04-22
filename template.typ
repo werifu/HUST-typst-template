@@ -64,9 +64,10 @@
   )
 }
 
-// 两个汉字的缩进
-#let indent() = {
-  box(width: 1.8em)
+
+#let empty_par() = {
+  v(-1em)
+  box()
 }
 
 #let toc() = {
@@ -173,7 +174,7 @@
     set text(weight: "bold", font: heiti, size: 18pt)
 
     "致　　谢"
-  } + indent()
+  } + empty_par()
 
   
   [= 致谢 <_thx>]
@@ -458,12 +459,13 @@
   show heading: it => {
     set text(weight: "bold", font: heiti, size: 12pt)
     it
-  } + indent()
+  } + empty_par()
 
   set text(font: songti, 12pt)
   set par(justify: false, leading: 1.5em, first-line-indent: 2em)
   show par: it => {
     it
+    // 分段时的行距
     v(5pt)
   }
   counter(page).update(1)
