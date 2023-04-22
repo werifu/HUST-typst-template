@@ -71,7 +71,6 @@
 }
 
 #let toc() = {
-  v(1em)
 
   // HUST 的反人类目录还包括出现在目录前的摘要……硬编码吧
   align(center)[
@@ -84,7 +83,7 @@
   [摘要 ] + [.] * 130 + [ I]
   parbreak()
 
-  text(weight: "bold")[Abstract ] + [.] * 122 + [ II]
+  [Abstract ] + [.] * 123 + [ II]
 
   show outline: it => {
     set text(font: songti, size: 12pt)
@@ -188,7 +187,6 @@
 
 // 中文摘要
 #let zh_abstract_page(abstract, keywords: ()) = {
-  v(2em)
 
   align(center)[
     #text(font: heiti, size: 18pt, "摘　　要")
@@ -212,7 +210,6 @@
 
 // 英文摘要
 #let en_abstract_page(abstract, keywords: ()) = {
-  v(2em)
 
   align(center)[
     #text(weight: "bold", font: heiti, size: 18pt, "Abstract")
