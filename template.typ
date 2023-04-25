@@ -1,6 +1,10 @@
 #let heiti = ("Times New Roman", "Heiti SC", "Heiti TC")
 #let songti = ("Times New Roman", "Songti SC", "Songti TC")
 
+#let indent() = {
+  box(width: 2em)
+}
+
 #let indent_par(body) = {
   box(width: 1.8em)
   body
@@ -70,6 +74,7 @@
   box()
 }
 
+// TODO: 大章节黑体，小章节宋体，需要自己实现outline()
 #let toc() = {
 
   // HUST 的反人类目录还包括出现在目录前的摘要……硬编码吧
@@ -79,31 +84,28 @@
 
   parbreak()
 
-  set text(font: songti, size: 12pt)
+  set text(font: heiti, size: 12pt)
+  set par(first-line-indent: 0pt)
+
   [摘要 ] + [.] * 130 + [ I]
   parbreak()
 
   [Abstract ] + [.] * 123 + [ II]
 
   show outline: it => {
-    set text(font: songti, size: 12pt)
-    set par(leading: 1.5em)
+    set text(font: heiti, size: 12pt)
     it
     pagebreak()
   }
   outline(
-    title: none
+    title: none,
+    indent: true,
   )
 }
 
 // 原创性声明和授权书
 #let declaration() = {
   set text(font: songti, 12pt)
-
-  show par: it => {
-    it
-    v(5pt)
-  }
 
   v(3em)
   align(center)[
@@ -153,10 +155,6 @@
   set heading(level: 1, numbering: none)
 
   set par(justify: false, leading: 1.5em, first-line-indent: 2em)
-  show par: it => {
-    it
-    v(5pt)
-  }
 
   bibliography(path, title:"参考文献")
 }
@@ -177,11 +175,7 @@
 
   
   [= 致谢 <_thx>]
-  set par(justify: false, leading: 1.5em, first-line-indent: 2em)
-  show par: it => {
-    it
-    v(5pt)
-  }
+
   body
 }
 
@@ -193,11 +187,6 @@
   ]
 
   set text(font: songti, size: 12pt)
-  set par(justify: false, leading: 1.5em, first-line-indent: 2em)
-  show par: it => {
-    it
-    v(5pt)
-  }
 
   abstract
   par(first-line-indent: 0em)[
@@ -216,11 +205,6 @@
   ]
 
   set text(font: songti, size: 12pt)
-  set par(justify: false, leading: 1.5em, first-line-indent: 2em)
-  show par: it => {
-    it
-    v(5pt)
-  }
 
   abstract
   par(first-line-indent: 0em)[
@@ -402,6 +386,10 @@
     }
   )
 
+  set text(font: songti, 12pt)
+  set par(justify: false, leading: 1.5em, first-line-indent: 2em)
+  show par: set block(spacing: 1.5em)
+
   // 原创性声明
   declaration()
 
@@ -445,6 +433,7 @@
   show heading.where(level: 1): it => {
     set align(center)
     set text(weight: "bold", font: heiti, size: 18pt)
+    set block(spacing: 1em)
     it
   }
   show heading.where(level: 2): it => {
@@ -455,17 +444,18 @@
   // 首段不缩进，手动加上 box
   show heading: it => {
     set text(weight: "bold", font: heiti, size: 12pt)
+    set block(above: 1.5em, below: 1em)
     it
   } + empty_par()
 
-  set text(font: songti, 12pt)
-  set par(justify: false, leading: 1.5em, first-line-indent: 2em)
-  show par: it => {
-    it
-    // 分段时的行距
-    v(5pt)
-  }
   counter(page).update(1)
+
+  // 代码块(TODO: 加入行数)
+  show raw: it => {
+    set text(font: songti, 12pt)
+    set block(inset: 5pt, fill: rgb(217, 217, 217, 1), width: 100%)
+    it
+  }
 
   body
 }
