@@ -409,11 +409,11 @@
       
       grid(
         columns: (5fr, 1fr, 5fr),
-        line(length: 200pt, stroke: 0.7pt),
+        line(length: 100%, stroke: 0.7pt),
         text(font: songti, 10pt, baseline: -3pt, 
           counter(page).display("I")
         ),
-        line(length: 200pt, stroke: 0.7pt)
+        line(length: 100%, stroke: 0.7pt)
       )
     }
   )
@@ -450,11 +450,11 @@
       
       grid(
         columns: (5fr, 1fr, 5fr),
-        line(length: 200pt, stroke: 0.7pt),
+        line(length: 100%, stroke: 0.7pt),
         text(font: songti, 10pt, baseline: -3pt, 
           counter(page).display("1")
         ),
-        line(length: 200pt, stroke: 0.7pt)
+        line(length: 100%, stroke: 0.7pt)
       )
     }
   )
