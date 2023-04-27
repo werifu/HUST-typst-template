@@ -39,7 +39,11 @@ typst 是最新最热的标记文本语言，定位与 LaTeX 类似，具有极�
 
 个人观点：跟 Markdown 一样好用，跟 LaTeX 一样强大
 
-是吗
+
+#img(
+  image("assets/avatar.jpeg", height: 20%),
+  caption: "我的 image 实例 0",
+)
 
 == 基本语法
 
@@ -73,7 +77,7 @@ typst 是最新最热的标记文本语言，定位与 LaTeX 类似，具有极�
 #img(
   image("assets/avatar.jpeg", height: 20%),
   caption: "我的 image 实例 1",
-)
+) <img1>
 
 引用的话就在 img 后加上标签<label>，使用 at 来引用即可，比如@img2 就是这么引用的。
 
@@ -81,6 +85,8 @@ typst 是最新最热的标记文本语言，定位与 LaTeX 类似，具有极�
   image("assets/avatar.jpeg", height: 20%),
   caption: "我的 image 实例 2",
 ) <img2>
+
+引用 2-1: @img1
 
 == 表格
 
@@ -183,14 +189,12 @@ $ x < y => x gt.eq.not y $
 
 - 无序列表2: 2
 
-#indent_par()[
-列表后的正文，应当有缩进。这里使用一个 indent_par 函数来手动生成段落缩进，在目前的 typst 设计里，按英文排版的习惯，连续段落里的第一段是不会缩进的，也包括各种列表。
-]
+#indent()列表后的正文，应当有缩进。这里使用一个 indent_par 函数来手动生成段落缩进，在目前的 typst 设计里，按英文排版的习惯，连续段落里的第一段是不会缩进的，也包括各种列表。
 
 1. 有序列表1
 2. 有序列表2
 
-列表后的正文，应当有缩进，但是这里没有，请自己包上 \#indent_par
+列表后的正文，应当有缩进，但是这里没有，请自己在段首加上\#indent()，也可以用 \#indent_par()[] 包裹整段
 
 想自己定义可以自己set numbering，建议用 \#[] 包起来保证只在该作用域内生效：
 

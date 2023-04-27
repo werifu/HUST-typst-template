@@ -229,6 +229,38 @@
   date: (1926, 8, 17),
   body,
 ) = {
+  // 引用的时候，图表公式等的 numbering 会有错误，所以用引用 element 手动查
+  show ref: it => {
+    if it.element != none and it.element.func() == figure {
+      let el = it.element
+      let loc = el.location()
+      let chapt = counter(heading).at(loc).at(0)
+
+      if el.kind == "image" or el.kind == "table" {
+        // 每章有独立的计数器
+        let num = counter(el.kind + "-chapter" + str(chapt)).at(loc).at(0) + 1
+        it.element.supplement
+        " "
+        str(chapt)
+        "-"
+        str(num)
+      } else if el.kind == "equation" {
+        // 公式有 '(' ')'
+        let num = counter(el.kind + "-chapter" + str(chapt)).at(loc).at(0) + 1
+        it.element.supplement
+        " ("
+        str(chapt)
+        "-"
+        str(num)
+        ")"
+      } else {
+        it
+      }
+    } else {
+      it
+    }
+  }
+
   // 图表公式的排版
   show figure: it => {
     set align(center)
