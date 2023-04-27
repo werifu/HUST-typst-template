@@ -1,5 +1,6 @@
-#let heiti = ("Times New Roman", "Heiti SC", "Heiti TC")
-#let songti = ("Times New Roman", "Songti SC", "Songti TC")
+#let heiti = ("Times New Roman", "Heiti SC", "Heiti TC", "SimHei")
+#let songti = ("Times New Roman", "Songti SC", "Songti TC", "SimSun")
+#let zhongsong = ("Times New Roman", "STZhongsong", "SimSun")
 
 #let indent() = {
   box(width: 2em)
@@ -323,7 +324,7 @@
 
     #text(
       size: 36pt,
-      font: "Songti SC",
+      font: zhongsong,
       weight: "bold"
     )[本科生毕业设计(论文)]
 
@@ -346,7 +347,7 @@
           bottom: 1pt + black
         ),
         text(
-          font: songti,
+          font: zhongsong,
           size: 16pt,
           bottom-edge: "descender"
         )[
@@ -359,7 +360,7 @@
       rect(width: 100%, inset: 2pt, 
        stroke: none,
        text(
-        font: songti,
+        font: zhongsong,
         size: 16pt,
         body
       ))
@@ -383,7 +384,7 @@
 
     #v(40pt)
     #text(
-      font: songti,
+      font: zhongsong,
       size: 16pt,
     )[
       #date.at(0) 年 #date.at(1) 月 #date.at(2) 日
