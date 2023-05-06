@@ -1,6 +1,6 @@
 #let heiti = ("Times New Roman", "Heiti SC", "Heiti TC", "SimHei")
 #let songti = ("Times New Roman", "Songti SC", "Songti TC", "SimSun")
-#let zhongsong = ("Times New Roman", "STZhongsong", "SimSun")
+#let zhongsong = ("Times New Roman", "Songti SC")
 
 #let indent() = {
   box(width: 2em)
@@ -332,7 +332,7 @@
 
     #text(
       font: heiti,
-      size: 20pt,
+      size: 22pt,
     )[
       #title
     ]
@@ -504,7 +504,7 @@
 }
 
 #let tlt_cell(content) = {
-  set align(left)
+  set align(center)
   rect(
     width: 100%,
     stroke: none,
