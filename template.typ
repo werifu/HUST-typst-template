@@ -2,6 +2,10 @@
 #let songti = ("Times New Roman", "Songti SC", "Songti TC", "SimSun")
 #let zhongsong = ("Times New Roman", "Songti SC")
 
+#let bib_cite(..name) = {
+  super(cite(..name))
+}
+
 #let indent() = {
   box(width: 2em)
 }
@@ -75,33 +79,52 @@
   box()
 }
 
-// TODO: 大章节黑体，小章节宋体，需要自己实现outline()
-#let toc() = {
-
-  // HUST 的反人类目录还包括出现在目录前的摘要……硬编码吧
+// inspired from https://github.com/lucifer1004/pkuthss-typst.git
+#let chinese_outline() = {
   align(center)[
     #text(font: heiti, size: 18pt, "目　　录")
   ]
 
-  parbreak()
+  set text(font: songti, size: 12pt)
+  // 临时取消目录的首行缩进
+  set par(leading: 1.24em, first-line-indent: 0pt)
+  locate(loc => {
+    let elements = query(heading.where(outlined: true), loc)
+    for el in elements {
+      // 是否有 el 位于前面，前面的目录中用拉丁数字，后面的用阿拉伯数字
+      let before_toc = query(heading.where(outlined: true).before(loc), loc).find((one) => {one.body == el.body}) != none
+      let page_num = if before_toc {
+        numbering("I", counter(page).at(el.location()).first())
+      } else {
+        counter(page).at(el.location()).first()
+      }
 
-  set text(font: heiti, size: 12pt)
-  set par(first-line-indent: 0pt)
+      link(el.location())[#{
+        // acknoledgement has no numbering
+        let chapt_num = if el.numbering != none {
+          numbering(el.numbering, ..counter(heading).at(el.location()))
+        } else {none}
 
-  [摘要 ] + [.] * 130 + [ I]
-  parbreak()
+        if el.level == 1 {
+          set text(weight: "bold")
+          if chapt_num == none {} else {
+            chapt_num
+            "　　"
+          }
+          el.body
+        } else {
+          chapt_num
+          "　"
+          el.body
+        }
+      }]
 
-  [Abstract ] + [.] * 123 + [ II]
-
-  show outline: it => {
-    set text(font: heiti, size: 12pt)
-    it
-    pagebreak()
-  }
-  outline(
-    title: none,
-    indent: true,
-  )
+      // 填充 ......
+      box(width: 1fr, h(0.5em) + box(width: 1fr, repeat[.]) + h(0.5em))
+      [#page_num]
+      linebreak()
+    }
+  })
 }
 
 // 原创性声明和授权书
@@ -115,7 +138,7 @@
     ]
   ]
   text(font: songti, size: 12pt)[
-    #set par(justify: false, leading: 1.5em, first-line-indent: 2em)
+    #set par(justify: false, leading: 1.24em, first-line-indent: 2em)
     本人郑重声明：所呈交的论文是本人在导师的指导下独立进行研究所取得的 研究成果。除了文中特别加以标注引用的内容外，本论文不包括任何其他个人或集体已经发表或撰写的成果作品。本人完全意识到本声明的法律后果由本人承担。
   ]
   v(2em)
@@ -130,7 +153,7 @@
     ]
   ]
   text(font: songti, size: 12pt)[
-    #set par(justify: false, leading: 1.5em, first-line-indent: 2em)
+    #set par(justify: false, leading: 1.24em, first-line-indent: 2em)
     本学位论文作者完全了解学校有关保障、使用学位论文的规定，同意学校保留并向有关学位论文管理部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅。本人授权省级优秀学士论文评选机构将本学位论文的全部或部分内容编入有关数据进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。
 
     学位论文属于 1、保密 □，在#h(3em)年解密后适用本授权书。
@@ -155,7 +178,7 @@
   // 这个取消目录里的 numbering
   set heading(level: 1, numbering: none)
 
-  set par(justify: false, leading: 1.5em, first-line-indent: 2em)
+  set par(justify: false, leading: 1.24em, first-line-indent: 2em)
 
   bibliography(path, title:"参考文献")
 }
@@ -182,10 +205,13 @@
 
 // 中文摘要
 #let zh_abstract_page(abstract, keywords: ()) = {
-
-  align(center)[
-    #text(font: heiti, size: 18pt, "摘　　要")
-  ]
+  set heading(level: 1, numbering: none)
+  show <_zh_abstract_>: {
+    align(center)[
+      #text(font: heiti, size: 18pt, "摘　　要")
+    ]
+  }
+  [= 摘要 <_zh_abstract_>]
 
   set text(font: songti, size: 12pt)
 
@@ -200,10 +226,13 @@
 
 // 英文摘要
 #let en_abstract_page(abstract, keywords: ()) = {
-
-  align(center)[
-    #text(weight: "bold", font: heiti, size: 18pt, "Abstract")
-  ]
+  set heading(level: 1, numbering: none)
+  show <_en_abstract_>: {
+    align(center)[
+      #text(font: heiti, size: 18pt, "Abstract")
+    ]
+  }
+  [= Abstract <_en_abstract_>]
 
   set text(font: songti, size: 12pt)
 
@@ -237,26 +266,28 @@
       let loc = el.location()
       let chapt = counter(heading).at(loc).at(0)
 
-      if el.kind == "image" or el.kind == "table" {
-        // 每章有独立的计数器
-        let num = counter(el.kind + "-chapter" + str(chapt)).at(loc).at(0) + 1
-        it.element.supplement
-        " "
-        str(chapt)
-        "-"
-        str(num)
-      } else if el.kind == "equation" {
-        // 公式有 '(' ')'
-        let num = counter(el.kind + "-chapter" + str(chapt)).at(loc).at(0) + 1
-        it.element.supplement
-        " ("
-        str(chapt)
-        "-"
-        str(num)
-        ")"
-      } else {
-        it
-      }
+      // 自动跳转
+      link(loc)[#if el.kind == "image" or el.kind == "table" {
+          // 每章有独立的计数器
+          let num = counter(el.kind + "-chapter" + str(chapt)).at(loc).at(0) + 1
+          it.element.supplement
+          " "
+          str(chapt)
+          "-"
+          str(num)
+        } else if el.kind == "equation" {
+          // 公式有 '(' ')'
+          let num = counter(el.kind + "-chapter" + str(chapt)).at(loc).at(0) + 1
+          it.element.supplement
+          " ("
+          str(chapt)
+          "-"
+          str(num)
+          ")"
+        } else {
+          it
+        }
+      ]
     } else {
       it
     }
@@ -420,12 +451,33 @@
   )
 
   set text(font: songti, 12pt)
-  set par(justify: false, leading: 1.5em, first-line-indent: 2em)
-  show par: set block(spacing: 1.5em)
+  set par(justify: true, leading: 1.24em, first-line-indent: 2em)
+  show par: set block(spacing: 1.24em)
+
+  set heading(numbering: (..nums) => {
+    nums.pos().map(str).join(".") + "　"
+  })
+  show heading.where(level: 1): it => {
+    set align(center)
+    set text(weight: "bold", font: heiti, size: 18pt)
+    set block(spacing: 1.5em)
+    it
+  }
+  show heading.where(level: 2): it => {
+    set text(weight: "bold", font: heiti, size: 14pt)
+    set block(above: 1.5em, below: 1.5em)
+    it
+  }
+
+  // 首段不缩进，手动加上 box
+  show heading: it => {
+    set text(weight: "bold", font: heiti, size: 12pt)
+    set block(above: 1.5em, below: 1.5em)
+    it
+  } + empty_par()
 
   // 原创性声明
   declaration()
-
 
   pagebreak()
   counter(page).update(1)
@@ -441,7 +493,7 @@
   pagebreak()
 
   // 目录
-  toc()
+  chinese_outline()
 
   // 正文的页脚
   
@@ -460,26 +512,6 @@
     }
   )
 
-  set heading(numbering: (..nums) => {
-    nums.pos().map(str).join(".") + "　"
-  })
-  show heading.where(level: 1): it => {
-    set align(center)
-    set text(weight: "bold", font: heiti, size: 18pt)
-    set block(spacing: 1em)
-    it
-  }
-  show heading.where(level: 2): it => {
-    set text(weight: "bold", font: heiti, size: 14pt)
-    it
-  }
-
-  // 首段不缩进，手动加上 box
-  show heading: it => {
-    set text(weight: "bold", font: heiti, size: 12pt)
-    set block(above: 1.5em, below: 1em)
-    it
-  } + empty_par()
 
   counter(page).update(1)
 
