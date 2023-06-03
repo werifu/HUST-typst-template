@@ -4,8 +4,11 @@
 
 ## ⚠️风险警告⚠️
 
-- 非官方模板，存在不被认可风险
-- 有部分难以短期解决的问题：无伪粗体、无法自定义参考文献格式
+- 民间模板，存在不被认可风险
+  - 作者用此模板已成功从网安学院毕业
+- 有部分难以短期解决的问题：
+  - 无伪粗体：暂时无法解决，但是标题所需的黑体粗体在打印出来的情况下几乎看不出区别
+  - 无自定义参考文献格式：自己维护引用项顺序（参见sample.typ）
 
 ## 什么是 typst
 
@@ -19,7 +22,7 @@
 
 可以从[这里速通 typst](https://typst.app/docs/tutorial)
 
-跟 word 比的优势：好用太多了
+跟 word 比的优势：格式好调，玄学问题少。
 
 ## 使用
 
@@ -30,20 +33,18 @@
 typst 也提供了线上编辑器（类似overleaf），查看本模板：
 https://typst.app/project/rqTPs502DAhLTQctaUmbtn
 
-（ps：浏览器可能没宋体，字体可能不对，请忽略字体）
+（ps：浏览器可能没有微软宋体、微软黑体等学校要求的字体，不建议在该平台上生成）
 
 ### 本地编辑
 
 1. 下载对应平台的 typst：https://github.com/typst/typst/releases 记得先看看它的 README
 2. clone 本仓库
-3. 按本仓库中的 sample.typ 照葫芦画瓢即可
-4. 在本项目目录里，命令行执行类似 `/path/to/your/typst watch xxx.typ` 的命令即可编译同名 pdf 文件，而且一旦更新就会增量编译，推荐在 VSCode 中写，下载 `Typst LSP` 插件获得语法提示
+3. 按本仓库中的 sample.typ 照葫芦画瓢即可，sample.typ 既是样例也是说明书
+4. 在本项目目录里，命令行执行 `typst watch xxx.typ` 的命令即可编译同名 pdf 文件，而且一旦更新就会增量编译，推荐在 VSCode 中写，下载 `Typst LSP` 插件获得语法提示
 
 ## 说明
 
-这个模板应该还不是完全版，可能不能覆盖到华科论文的所有case要求，如果遇到特殊 case 请提交 issue 说明，或者也可以直接提 pull request。
+该模板仍需完善，欢迎 issue / pull request 贡献。
 
-同时，由于 typst 太新了，2023年4月初刚发布0.1.0版本，可能会有大的break change发生，模板会做相应修改。
-
-主要排版数据参考来自 https://github.com/zfengg/HUSTtex 同时有一定肉眼排版成分，所以有可能不完全符合华科排版要求，如果遇到不对的间距、字体等请提交 issue 说明，四月中旬会安排更精确的排版重构。
+主要排版数据参考来自 https://github.com/zfengg/HUSTtex 同时有一定肉眼排版成分，所以有可能不完全符合华科排版要求，如果遇到不对的间距、字体等请提交 issue 说明。
 
