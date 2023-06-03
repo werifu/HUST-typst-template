@@ -1,6 +1,6 @@
 #let heiti = ("Times New Roman", "Heiti SC", "Heiti TC", "SimHei")
 #let songti = ("Times New Roman", "Songti SC", "Songti TC", "SimSun")
-#let zhongsong = ("Times New Roman", "Songti SC")
+#let zhongsong = ("Times New Roman","STZhongsong", "SimSun")
 
 #let bib_cite(..name) = {
   super(cite(..name))
@@ -106,7 +106,7 @@
         } else {none}
 
         if el.level == 1 {
-          set text(weight: "bold")
+          set text(weight: "black")
           if chapt_num == none {} else {
             chapt_num
             "　　"
@@ -131,7 +131,7 @@
 #let declaration() = {
   set text(font: songti, 12pt)
 
-  v(3em)
+  v(5em)
   align(center)[
     #text(font: heiti, size: 18pt)[
       学位论文原创性声明
@@ -420,8 +420,13 @@
     )[
       #date.at(0) 年 #date.at(1) 月 #date.at(2) 日
     ]
+    #pagebreak()
   ]
-  
+
+  // 原创性声明
+  declaration()
+  pagebreak()
+
   counter(page).update(0)
   // 页眉
   set page(
@@ -475,9 +480,6 @@
     set block(above: 1.5em, below: 1.5em)
     it
   } + empty_par()
-
-  // 原创性声明
-  declaration()
 
   pagebreak()
   counter(page).update(1)
