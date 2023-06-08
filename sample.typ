@@ -1,6 +1,7 @@
 #import "template.typ": *
 
 #show: project.with(
+  anony: false,
   title: "基于 ChatGPT 的狗屁通文章生成器",
   author: "作者",
   abstract_zh: [
