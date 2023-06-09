@@ -1,6 +1,8 @@
 # HUST-typst-template
 
-用于华科毕业设计（本科）的 typst 模板。
+用于华科毕业设计（本科）的 typst 模板，一键、快速、持续生成毕业论文 pdf。
+
+![](assets/sample.png)
 
 ## ⚠️风险警告⚠️
 
@@ -24,32 +26,37 @@
 
 跟 word 比的优势：格式好调，玄学问题少。
 
-## 其他特性
-
-* 支持匿名处理，anony 参数设置为 true 即为匿名，会把校名以及个人信息等替换成小黑条，论文提交阶段使用，不需要再对 pdf 作特殊编辑（致谢中的敏感信息还是需要自己处理）
-
-
 ## 使用
 
 快速浏览效果：[查看sample.pdf](./sample.pdf)，样例论文源码：[查看sample.typ](./sample.typ)
 
-### 线上编辑
-
-typst 也提供了线上编辑器（类似overleaf），查看本模板：
-https://typst.app/project/rqTPs502DAhLTQctaUmbtn
-
-（ps：浏览器可能没有微软宋体、微软黑体等学校要求的字体，不建议在该平台上生成）
-
-### 本地编辑
+### 本地编辑（推荐）
 
 1. 下载对应平台的 typst：https://github.com/typst/typst/releases 记得先看看它的 README
 2. clone 本仓库
 3. 按本仓库中的 sample.typ 照葫芦画瓢即可，sample.typ 既是样例也是说明书
 4. 在本项目目录里，命令行执行 `typst watch xxx.typ` 的命令即可编译同名 pdf 文件，而且一旦更新就会增量编译，推荐在 VSCode 中写，下载 `Typst LSP` 插件获得语法提示
 
+
+### 线上编辑（不推荐）
+
+typst 也提供了线上编辑器（类似overleaf），查看本模板：
+https://typst.app/project/rqTPs502DAhLTQctaUmbtn
+
+（ps：浏览器可能没有微软宋体、微软黑体等学校要求的字体，不建议在该平台上生成）
+
+## 其他特性
+
+* 支持匿名处理，anony 参数设置为 true 即为匿名，会把校名以及个人信息等替换成小黑条，论文提交阶段使用，不需要再对 pdf 作特殊编辑（致谢中的敏感信息仍需自己处理）
+
+![](assets/anony-sample.png)
+
 ## 说明
 
-该模板仍需完善，欢迎 issue / pull request 贡献。
+该模板仍需完善，有一定肉眼排版成分，所以有可能不完全符合华科排版要求，如果遇到不对的间距、字体等请提交 issue 说明，也欢迎 pull request 贡献。（笔者已毕业跑路，恐怕无法跟上更新步伐，需仰仗他人贡献）
 
-主要排版数据参考来自 https://github.com/zfengg/HUSTtex 同时有一定肉眼排版成分，所以有可能不完全符合华科排版要求，如果遇到不对的间距、字体等请提交 issue 说明。
+## 参考
+
+* https://github.com/zfengg/HUSTtex HUSTTex 项目
+* https://www.overleaf.com/read/fdbtqrqrqgfg 计院模板
 
