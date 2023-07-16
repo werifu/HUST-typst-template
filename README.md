@@ -35,7 +35,7 @@
 1. 下载对应平台的 typst：https://github.com/typst/typst/releases 记得先看看它的 README
 2. clone 本仓库
 3. 按本仓库中的 sample.typ 照葫芦画瓢即可，sample.typ 既是样例也是说明书
-4. 在本项目目录里，命令行执行 `typst watch xxx.typ` 的命令即可编译同名 pdf 文件，而且一旦更新就会增量编译，推荐在 VSCode 中写，下载 `Typst LSP` 插件获得语法提示
+4. 在本项目目录里，命令行执行 `typst watch xxx.typ` 的命令即可编译同名 pdf 文件，而且一旦更新就会增量编译，推荐在 VSCode 中写，下载 `Typst LSP` 插件获得语法提示。使用 [`Typst Preview`](https://github.com/enter-tainer/typst-preview-vscode) 插件可以实现文本和预览之间的快速跳转与实时预览。
 
 
 ### 线上编辑（不推荐）
