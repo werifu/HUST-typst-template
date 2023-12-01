@@ -1,4 +1,6 @@
 #import "template.typ": *
+#import "@preview/codelst:2.0.0": sourcecode
+
 
 #show: project.with(
   anony: false,
@@ -209,7 +211,7 @@ $ x < y => x gt.eq.not y $
 
 == 文献引用
 
-引用支持 LaTeX Bib 的格式，也支持更简单好看的 yml 来配置，在引用时使用#bib_cite("harry", "某本参考书")以获得右上的引用标注。
+引用支持 LaTeX Bib 的格式，也支持更简单好看的 yml 来配置，在引用时使用#bib_cite(<harry>)#bib_cite(<某本参考书>)以获得右上的引用标注。
 
 
 记得在最后加入\#references("xxxref.yml")函数的调用来生成参考文献。
