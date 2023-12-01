@@ -206,6 +206,23 @@ $ x < y => x gt.eq.not y $
   + 自定义列表2.1
 ]
 
+== 代码块
+
+//代码块使用的是库codelst，语法和markdown类似
+#sourcecode[```typ
+#show "ArtosFlow": name => box[
+  #box(image(
+    "logo.svg",
+    height: 0.7em,
+  ))
+  #name
+]
+
+This report is embedded in the
+ArtosFlow project. ArtosFlow is a
+project of the Artos Institute.
+```]
+
 #pagebreak()
 = 其他说明
 
