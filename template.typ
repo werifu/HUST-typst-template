@@ -319,7 +319,7 @@
       it.body
       it.supplement
       " " + it.counter.display(it.numbering)
-      "　" + it.caption
+      "　" + it.caption.body
       locate(loc => {
         let chapt = counter(heading).at(loc).at(0)
         let c = counter("image-chapter" + str(chapt))
@@ -329,7 +329,7 @@
       set text(font: heiti, size: 12pt)
       it.supplement
       " " + it.counter.display(it.numbering)
-      "　" + it.caption
+      "　" + it.caption.body
       set text(font: songti, size: 10.5pt)
       it.body
       locate(loc => {
@@ -365,7 +365,7 @@
   // 封面
   align(center)[
     // hust logo
-    #v(30pt)
+    #v(20pt)
 
     // 匿名化处理需要去掉个人、机构信息
     #let logo_path = if not anony {
@@ -375,7 +375,7 @@
     }
     #image(logo_path, width: 55%, height: 7%)
 
-    #v(50pt)
+    #v(40pt)
 
     #text(
       size: 36pt,
@@ -392,7 +392,7 @@
       #title
     ]
 
-    #v(100pt)
+    #v(80pt)
 
     #let info_value(body) = {
       rect(
@@ -437,7 +437,7 @@
       info_value(if not anony { mentor } else { "██████████" }),
     )
 
-    #v(40pt)
+    #v(30pt)
     #text(
       font: zhongsong,
       size: 16pt,
