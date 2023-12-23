@@ -3,7 +3,7 @@
 
 
 #show: project.with(
-  anony: false,
+  anonymous: false,
   title: "基于 ChatGPT 的狗屁通文章生成器但是把标题加长到两行",
   author: "作者",
   abstract_zh: [
@@ -228,7 +228,7 @@ project of the Artos Institute.
 
 == 文献引用
 
-引用支持 LaTeX Bib 的格式，也支持更简单好看的 yml 来配置，在引用时使用#bib_cite(<harry>)#bib_cite(<某本参考书>)以获得右上的引用标注。
+引用支持 LaTeX Bib 的格式，也支持更简单好看的 yml 来配置（尚未流行，推荐优先使用`.bib`，在引用时使用`#bib_cite(<impagliazzo2001problems>)`#bib_cite(<impagliazzo2001problems>)#bib_cite(<刘星2014恶意代码的函数调用图相似性分析>)以获得右上的引用标注#bib_cite(<刘星2014恶意代码的函数调用图相似性分析>)。
 
 
 记得在最后加入\#references("xxxref.yml")函数的调用来生成参考文献。
@@ -311,30 +311,7 @@ a4纸，上下空2.5cm，左右空3cm
 
 #pagebreak()
 
-// #let references(path) = {
-//   // 这个取消目录里的 numbering
-//   set heading(level: 1, numbering: none)
-
-//   set par(justify: false, leading: 1.24em, first-line-indent: 2em)
-  
-//   show bibliography: it => {
-//     [= 参考文献]
-//     let bib = yaml("./bibitems.yaml")
-//     // let bib = yaml("arr.yaml")
-//     let idx = 0
-//     set par(leading: 1.24em)
-//     grid(
-//       columns: (1fr, 15fr),
-//       row-gutter: 1.24em,
-//       ..bib.enumerate().map(((idx, title)) => {
-//         ([[#{idx+1}]], title)
-//       }).flatten()
-//     )
-//   }
-//   bibliography(path, title:"参考文献")
-// }
-
-#references("./ref.yml")
+#references("./ref.bib")
 
 #pagebreak()
-#indent() 由于华科使用自创引用格式，基本上为 GB/T 7714 去掉[J]、[C]、[M] 等。所以需要用 show rule 来自定义格式，原理为读取自定义的 bibitems.yaml 文件再一项项渲染出来，因此要求自己维护顺序，使用时请取消 \#references() 前的注释。
+#indent() 由于华科使用自创引用格式，基本上为 GB/T 7714 去掉[J]、[C]、[M] 刊物类型。Typst 已支持 `csl` 自定义参考文献列表，基于#link("https://github.com/citation-style-language/styles/blob/master/china-national-standard-gb-t-7714-2015-numeric.csl")[国标]修改，如果想再自定义新的格式，请修改 `template.typ` 中 `bibliography` 函数中 style 参数。

@@ -3,7 +3,7 @@
 #let zhongsong = ("Times New Roman","STZhongsong", "SimSun")
 
 #let bib_cite(..name) = {
-  super(cite(..name))
+  cite(..name)
 }
 
 #let indent() = {
@@ -128,7 +128,7 @@
 }
 
 // 原创性声明和授权书
-#let declaration(anony: false) = {
+#let declaration(anonymous: false) = {
   set text(font: songti, 12pt)
 
   v(5em)
@@ -143,7 +143,7 @@
   ]
   v(2em)
   align(right)[
-    #if not anony {
+    #if not anonymous {
       text("作者签名：　　　　　　　年　　月　　日")
     } else {
       text("作者签名：██████████年███月███日")
@@ -158,7 +158,7 @@
   ]
   text(font: songti, size: 12pt)[
     #set par(justify: false, leading: 1.24em, first-line-indent: 2em)
-    #if not anony [
+    #if not anonymous [
       本学位论文作者完全了解学校有关保障、使用学位论文的规定，同意学校保留并向有关学位论文管理部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅。本人授权省级优秀学士论文评选机构将本学位论文的全部或部分内容编入有关数据进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。
     ] else [
       本学位论文作者完全了解学校有关保障、使用学位论文的规定，同意学校保留并向有关学位论文管理部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅。本人授权█████████████将本学位论文的全部或部分内容编入有关数据进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。
@@ -174,7 +174,7 @@
 
   v(3em)
   align(right)[
-    #if not anony {
+    #if not anonymous {
       text("作者签名：　　　　　　　年　　月　　日")
     } else {
       text("作者签名：██████████年███月███日")
@@ -182,7 +182,7 @@
   ]
 
   align(right)[
-    #if not anony {
+    #if not anonymous {
       text("导师签名：　　　　　　　年　　月　　日")
     } else {
       text("导师签名：██████████年███月███日")
@@ -197,7 +197,7 @@
 
   set par(justify: false, leading: 1.24em, first-line-indent: 2em)
 
-  bibliography(path, title:"参考文献")
+  bibliography(path, title:"参考文献", style: "./hust-cse-ug.csl")
 }
 
 
@@ -263,7 +263,7 @@
 }
 
 #let project(
-  anony: false, // 是否匿名化处理
+  anonymous: false, // 是否匿名化处理
   title: "",
   abstract_zh: [],
   abstract_en: [],
@@ -368,7 +368,7 @@
     #v(20pt)
 
     // 匿名化处理需要去掉个人、机构信息
-    #let logo_path = if not anony {
+    #let logo_path = if not anonymous {
       "./assets/hust.png"
     } else {
       "./assets/black.png"
@@ -426,15 +426,15 @@
       rows: (40pt, 40pt),
       gutter: 3pt,
       info_key("院　　系"),
-      info_value(if not anony { school } else { "██████████" }),
+      info_value(if not anonymous { school } else { "██████████" }),
       info_key("专业班级"),
-      info_value(if not anony { class } else { "██████████" }),
+      info_value(if not anonymous { class } else { "██████████" }),
       info_key("姓　　名"),
-      info_value(if not anony { author } else { "██████████" }),
+      info_value(if not anonymous { author } else { "██████████" }),
       info_key("学　　号"),
-      info_value(if not anony { id } else { "██████████" }),
+      info_value(if not anonymous { id } else { "██████████" }),
       info_key("指导教师"),
-      info_value(if not anony { mentor } else { "██████████" }),
+      info_value(if not anonymous { mentor } else { "██████████" }),
     )
 
     #v(30pt)
@@ -448,7 +448,7 @@
   ]
 
   // 原创性声明
-  declaration(anony: anony)
+  declaration(anonymous: anonymous)
   pagebreak()
 
   counter(page).update(0)
@@ -457,7 +457,7 @@
     header: {
       set text(font: songti, 10pt, baseline: 8pt, spacing: 3pt)
       set align(center)
-      if not anony {
+      if not anonymous {
         [华 中 科 技 大 学 毕 业 设 计 (论 文)]
       } else {
         [█████████████████████████]
