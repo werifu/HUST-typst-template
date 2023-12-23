@@ -69,4 +69,4 @@ https://typst.app/project/rqTPs502DAhLTQctaUmbtn
 * https://github.com/zfengg/HUSTtex HUSTTex 项目
 * https://www.overleaf.com/read/fdbtqrqrqgfg 计院模板
 * https://github.com/nju-lug/nju-thesis-typst NJU 模板，文档相对完善，对中文 Typst 模板有疑问可以查询
-* https://github.com/citation-style-language/styles/blob/master/china-national-standard-gb-t-7714-2015-numeric.csl 国标 csl
+* https://github.com/redleafnew/Chinese-STD-GB-T-7714-related-csl/blob/main/462huazhong-university-of-science-and-technology-school-of-cyber-science-and-engineering.csl 华科网安版本 CSL，稍加改写以通过 Rust 的 quick-xml 库编译

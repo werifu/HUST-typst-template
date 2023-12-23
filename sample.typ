@@ -232,7 +232,7 @@ project of the Artos Institute.
 
 记得在最后加入\#references("path/to/ref.bib")函数的调用来生成参考文献。
 
-由于华科使用自创引用格式，基本上为 GB/T 7714 去掉[J]、[C]、[M] 刊物类型。Typst 已支持 `csl` 自定义参考文献列表，基于#link("https://github.com/redleafnew/Chinese-STD-GB-T-7714-related-csl/blob/main/462huazhong-university-of-science-and-technology-school-of-cyber-science-and-engineering.csl ")[#underline()[这个]]修改，如果想再自定义新的格式，请修改 `template.typ` 中 `bibliography` 函数中 style 参数。
+由于华科使用自创引用格式，基本上为 GB/T 7714 去掉[J]、[C]、[M] 刊物类型。Typst 已支持 `csl` 自定义参考文献列表，基于#link("https://github.com/redleafnew/Chinese-STD-GB-T-7714-related-csl/blob/main/462huazhong-university-of-science-and-technology-school-of-cyber-science-and-engineering.csl")[#underline()[这个]]修改，如果想再自定义新的格式，请修改 `template.typ` 中 `bibliography` 函数中 style 参数。
 
 
 == 致谢部分
