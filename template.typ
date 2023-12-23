@@ -2,8 +2,10 @@
 #let songti = ("Times New Roman", "Songti SC", "Songti TC", "SimSun")
 #let zhongsong = ("Times New Roman","STZhongsong", "SimSun")
 
-#let bib_cite(..name) = {
-  cite(..name)
+#let bib_cite(..names) = {
+  for name in names.pos() {
+    cite(name)
+  }
 }
 
 #let indent() = {

@@ -228,12 +228,12 @@ project of the Artos Institute.
 
 == 文献引用
 
-引用支持 LaTeX Bib 的格式，也支持更简单好看的 yml 来配置（尚未流行，推荐优先使用`.bib`，在引用时使用`#bib_cite(<impagliazzo2001problems>)`#bib_cite(<impagliazzo2001problems>)#bib_cite(<刘星2014恶意代码的函数调用图相似性分析>)以获得右上的引用标注#bib_cite(<刘星2014恶意代码的函数调用图相似性分析>)。
+引用支持 LaTeX Bib 的格式，也支持更简单好看的 yml 来配置（尚未流行，推荐优先使用`.bib`）在引用时使用`#bib_cite(<tag>)`，像这样#bib_cite(<impagliazzo2001problems>,<Burckhardt:2013>)以获得右上的引用标注#bib_cite(<刘星2014恶意代码的函数调用图相似性分析>)#bib_cite(<papadimitriou1998combinatorial>)。
 
+记得在最后加入\#references("path/to/ref.bib")函数的调用来生成参考文献。
 
-记得在最后加入\#references("xxxref.yml")函数的调用来生成参考文献。
+由于华科使用自创引用格式，基本上为 GB/T 7714 去掉[J]、[C]、[M] 刊物类型。Typst 已支持 `csl` 自定义参考文献列表，基于#link("https://github.com/redleafnew/Chinese-STD-GB-T-7714-related-csl/blob/main/462huazhong-university-of-science-and-technology-school-of-cyber-science-and-engineering.csl ")[#underline()[这个]]修改，如果想再自定义新的格式，请修改 `template.typ` 中 `bibliography` 函数中 style 参数。
 
-*尚不支持国标，自定义参考文献功能官方正在开发中*
 
 == 致谢部分
 
@@ -312,6 +312,3 @@ a4纸，上下空2.5cm，左右空3cm
 #pagebreak()
 
 #references("./ref.bib")
-
-#pagebreak()
-#indent() 由于华科使用自创引用格式，基本上为 GB/T 7714 去掉[J]、[C]、[M] 刊物类型。Typst 已支持 `csl` 自定义参考文献列表，基于#link("https://github.com/citation-style-language/styles/blob/master/china-national-standard-gb-t-7714-2015-numeric.csl")[国标]修改，如果想再自定义新的格式，请修改 `template.typ` 中 `bibliography` 函数中 style 参数。
