@@ -93,6 +93,11 @@
   locate(loc => {
     let elements = query(heading.where(outlined: true), loc)
     for el in elements {
+      // 计算机学院要求不出现三级以上标题
+      if el.level > 2 {
+        continue
+      }
+
       // 是否有 el 位于前面，前面的目录中用拉丁数字，后面的用阿拉伯数字
       let before_toc = query(heading.where(outlined: true).before(loc), loc).find((one) => {one.body == el.body}) != none
       let page_num = if before_toc {
