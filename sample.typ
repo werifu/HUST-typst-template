@@ -1,5 +1,10 @@
 #import "template.typ": *
 #import "@preview/codelst:2.0.0": sourcecode
+#import "@preview/lovelace:0.2.0": *
+#show: setup-lovelace
+
+#let algorithm = algorithm.with(supplement: "算法")
+
 
 
 #show: project.with(
@@ -206,7 +211,8 @@ $ x < y => x gt.eq.not y $
   + 自定义列表2.1
 ]
 
-== 代码块
+== 代码
+=== 代码块
 
 //代码块使用的是库codelst，语法和markdown类似
 #sourcecode[```typ
@@ -222,6 +228,32 @@ This report is embedded in the
 ArtosFlow project. ArtosFlow is a
 project of the Artos Institute.
 ```]
+
+=== 伪代码
+
+
+计算机学院建议使用如下的伪代码模版进行伪代码书写。
+
+reference link: https://typst.app/universe/package/lovelace
+
+#algorithm(
+  caption: [The Euclidean algorithm],
+  pseudocode(
+    no-number,
+    [*input:* integers $a$ and $b$],
+    no-number,
+    [*output:* greatest common divisor of $a$ and $b$],
+    [*while* $a != b$ *do*], ind,
+      [*if* $a > b$ *then*], ind,
+        $a <- a - b$, ded,
+      [*else*], ind,
+        $b <- b - a$, ded,
+      [*end*], ded,
+    [*end*],
+    [*return* $a$]
+  )
+)
+
 
 #pagebreak()
 = 其他说明

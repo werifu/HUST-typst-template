@@ -54,6 +54,8 @@ https://typst.app/project/rqTPs502DAhLTQctaUmbtn
 
 该模板仍需完善，有一定肉眼排版成分，所以有可能不完全符合华科排版要求，如果遇到不对的间距、字体等请提交 issue 说明，也欢迎 pull request 贡献。
 
+不同学院对**引用格式**要求不太一致，因此在原网安学院的模版上稍加修改得到了计算机学院的模版，如果使用**计算机学院**的引用格式，请在 `template.typ` 的 `references` 中将 `./hust-cse-ug.csl` 修改为 `./hust-cs.csl`。
+
 **Help Wanted** 笔者已毕业跑路，无法勤快维护，希望能有对本项目有兴趣的人参与，可做的事情还有很多:)
 
 ### TODO

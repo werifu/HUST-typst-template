@@ -202,7 +202,7 @@
   // 这个取消目录里的 numbering
   set heading(level: 1, numbering: none)
 
-  set par(justify: false, leading: 1.24em, first-line-indent: 2em)
+  set par(justify: true, leading: 1.24em, first-line-indent: 2em)
 
   bibliography(path, title:"参考文献", style: "./hust-cse-ug.csl")
 }
@@ -264,7 +264,7 @@
   par(first-line-indent: 0em)[
     #text(weight: "bold", font: heiti, size: 12pt)[
       Key Words: 
-      #keywords.join("; ")
+      #keywords.join(", ")
     ]
   ]
 }
@@ -452,6 +452,7 @@
       #date.at(0) 年 #date.at(1) 月 #date.at(2) 日
     ]
     #pagebreak()
+    #pagebreak()
   ]
 
   // 原创性声明
@@ -568,7 +569,7 @@
   set align(center)
   rect(
     width: 100%,
-    stroke: (bottom: 1pt),
+    stroke: (bottom: 0pt), 
     [#content],
   )
 }
@@ -588,14 +589,16 @@
 
 #let three_line_table(values) = {
   rect(
-    stroke: (bottom: 1pt, top: 1pt),
+    stroke: (bottom: 1.5pt, top: 1.5pt),
     inset: 0pt,
     outset: 0pt,
     grid(
       columns: (auto),
       rows: (auto),
+      align: center + horizon,
       // table title
       grid(
+        stroke: (bottom: 0.75pt),
         columns: values.at(0).len(),
         ..values.at(0).map(tlt_header).flatten()
       ),
