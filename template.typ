@@ -243,8 +243,8 @@
   par(first-line-indent: 0em)[
     #text(weight: "bold", font: heiti, size: 12pt)[
       关键词：
-      #keywords.join("；")
     ]
+    #keywords.join("；")
   ]
 }
 
@@ -264,8 +264,8 @@
   par(first-line-indent: 0em)[
     #text(weight: "bold", font: heiti, size: 12pt)[
       Key Words: 
-      #keywords.join(", ")
     ]
+    #keywords.join(", ")
   ]
 }
 
