@@ -1,4 +1,5 @@
-#import "template.typ": *
+// #import "cs-template.typ": *
+#import "cse-template.typ": *
 #import "@preview/codelst:2.0.0": sourcecode
 #show: setup-lovelace
 

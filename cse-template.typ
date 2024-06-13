@@ -1,12 +1,8 @@
 #import "@preview/lovelace:0.2.0": *
 
-
-
-
-#let huawenkaiti = ("Times New Roman", "STKaiti")
 #let heiti = ("Times New Roman", "Heiti SC", "Heiti TC", "SimHei")
 #let songti = ("Times New Roman", "Songti SC", "Songti TC", "SimSun")
-#let zhongsong = ("STZhongsong", "Times New Roman")
+#let zhongsong = ("Times New Roman","STZhongsong", "SimSun")
 
 #let bib_cite(..names) = {
   for name in names.pos() {
@@ -208,7 +204,7 @@
   // 这个取消目录里的 numbering
   set heading(level: 1, numbering: none)
 
-  set par(justify: true, leading: 1.24em, first-line-indent: 2em)
+  set par(justify: false, leading: 1.24em, first-line-indent: 2em)
 
   bibliography(path, title:"参考文献", style: "./hust-cse-ug.csl")
 }
@@ -249,8 +245,8 @@
   par(first-line-indent: 0em)[
     #text(weight: "bold", font: heiti, size: 12pt)[
       关键词：
+      #keywords.join("；")
     ]
-    #keywords.join("；")
   ]
 }
 
@@ -270,8 +266,8 @@
   par(first-line-indent: 0em)[
     #text(weight: "bold", font: heiti, size: 12pt)[
       Key Words: 
+      #keywords.join("; ")
     ]
-    #keywords.join(", ")
   ]
 }
 
@@ -394,7 +390,7 @@
       size: 36pt,
       font: zhongsong,
       weight: "bold"
-    )[本科生毕业设计]
+    )[本科生毕业设计(论文)]
 
     #v(40pt)
 
@@ -458,7 +454,6 @@
       #date.at(0) 年 #date.at(1) 月 #date.at(2) 日
     ]
     #pagebreak()
-    #pagebreak()
   ]
 
   // 原创性声明
@@ -469,10 +464,10 @@
   // 页眉
   set page(
     header: {
-      set text(font: huawenkaiti, 16pt, baseline: 12pt, spacing: 16pt, fill: rgb("#960000"))
+      set text(font: songti, 10pt, baseline: 8pt, spacing: 3pt)
       set align(center)
       if not anonymous {
-        [华 中 科 技 大 学 毕 业 设 计]
+        [华 中 科 技 大 学 毕 业 设 计 (论 文)]
       } else {
         [█████████████████████████]
       }
@@ -575,7 +570,7 @@
   set align(center)
   rect(
     width: 100%,
-    stroke: (bottom: 0pt), 
+    stroke: (bottom: 1pt),
     [#content],
   )
 }
@@ -595,16 +590,14 @@
 
 #let three_line_table(values) = {
   rect(
-    stroke: (bottom: 1.5pt, top: 1.5pt),
+    stroke: (bottom: 1pt, top: 1pt),
     inset: 0pt,
     outset: 0pt,
     grid(
       columns: (auto),
       rows: (auto),
-      align: center + horizon,
       // table title
       grid(
-        stroke: (bottom: 0.75pt),
         columns: values.at(0).len(),
         ..values.at(0).map(tlt_header).flatten()
       ),
