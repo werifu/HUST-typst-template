@@ -1,6 +1,12 @@
+#import "@preview/lovelace:0.2.0": *
+
+
+
+
+#let huawenkaiti = ("Times New Roman", "STKaiti")
 #let heiti = ("Times New Roman", "Heiti SC", "Heiti TC", "SimHei")
 #let songti = ("Times New Roman", "Songti SC", "Songti TC", "SimSun")
-#let zhongsong = ("Times New Roman","STZhongsong", "SimSun")
+#let zhongsong = ("STZhongsong", "Times New Roman")
 
 #let bib_cite(..names) = {
   for name in names.pos() {
@@ -388,7 +394,7 @@
       size: 36pt,
       font: zhongsong,
       weight: "bold"
-    )[本科生毕业设计(论文)]
+    )[本科生毕业设计]
 
     #v(40pt)
 
@@ -463,10 +469,10 @@
   // 页眉
   set page(
     header: {
-      set text(font: songti, 10pt, baseline: 8pt, spacing: 3pt)
+      set text(font: huawenkaiti, 16pt, baseline: 12pt, spacing: 16pt, fill: rgb("#960000"))
       set align(center)
       if not anonymous {
-        [华 中 科 技 大 学 毕 业 设 计 (论 文)]
+        [华 中 科 技 大 学 毕 业 设 计]
       } else {
         [█████████████████████████]
       }
