@@ -379,7 +379,7 @@
 
     // 匿名化处理需要去掉个人、机构信息
     #let logo_path = if not anonymous {
-      "./assets/hust.png"
+      "./assets/cs-hust.png"
     } else {
       "./assets/black.png"
     }
