@@ -471,6 +471,7 @@
       if not anonymous {
         [华 中 科 技 大 学 毕 业 设 计]
       } else {
+        set text(fill: black)
         [█████████████████████████]
       }
       
