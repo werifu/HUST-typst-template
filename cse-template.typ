@@ -19,64 +19,33 @@
   body
 }
 
-#let equation_num(_) = {
-  locate(loc => {
-    let chapt = counter(heading).at(loc).at(0)
-    let c = counter("equation-chapter" + str(chapt))
-    let n = c.at(loc).at(0)
-    "(" + str(chapt) + "-" + str(n + 1) + ")"
-  })
+// 设置编号 (引用时, 需要使用标签)
+#let _set_numbering(body) ={
+    import "@preview/i-figured:0.2.4"
+
+    set heading(numbering: "1.1.1")
+
+    show heading: i-figured.reset-counters
+    show figure: i-figured.show-figure.with(numbering: "1-1")
+    show math.equation: i-figured.show-equation.with(numbering: "(1-1)")
+
+    body
 }
 
-#let table_num(_) = {
-  locate(loc => {
-    let chapt = counter(heading).at(loc).at(0)
-    let c = counter("table-chapter" + str(chapt))
-    let n = c.at(loc).at(0)
-    str(chapt) + "-" + str(n + 1)
-  })
+// 设置图表与标题中文前缀
+#let _set_figure(body) ={
+    show figure.where(kind: image): set figure(supplement: [图])
+
+    show figure.where(kind: table): set figure(supplement: [表])
+    show figure.where(kind: table): set figure.caption(position: top)
+
+    show figure.caption: set text(font: heiti)
+
+    set heading(supplement: [节])
+    set math.equation(supplement: [式])
+
+    body
 }
-
-#let image_num(_) = {
-  locate(loc => {
-    let chapt = counter(heading).at(loc).at(0)
-    let c = counter("image-chapter" + str(chapt))
-    let n = c.at(loc).at(0)
-    str(chapt) + "-" + str(n + 1)
-  })
-}
-
-
-#let equation(equation, caption: "") = {
-  figure(
-    equation,
-    caption: caption,
-    supplement: [公式],
-    numbering: equation_num,
-    kind: "equation",
-  )
-}
-
-#let tbl(tbl, caption: "") = {
-  figure(
-    tbl,
-    caption: caption,
-    supplement: [表],
-    numbering: table_num,
-    kind: "table",
-  )
-}
-
-#let img(img, caption: "") = {
-  figure(
-    img,
-    caption: caption,
-    supplement: [图],
-    numbering: image_num,
-    kind: "image",
-  )
-}
-
 
 #let empty_par() = {
   v(-1em)
@@ -286,84 +255,10 @@
   date: (1926, 8, 17),
   body,
 ) = {
-  // 引用的时候，图表公式等的 numbering 会有错误，所以用引用 element 手动查
-  show ref: it => {
-    if it.element != none and it.element.func() == figure {
-      let el = it.element
-      let loc = el.location()
-      let chapt = counter(heading).at(loc).at(0)
-
-      // 自动跳转
-      link(loc)[#if el.kind == "image" or el.kind == "table" {
-          // 每章有独立的计数器
-          let num = counter(el.kind + "-chapter" + str(chapt)).at(loc).at(0) + 1
-          it.element.supplement
-          " "
-          str(chapt)
-          "-"
-          str(num)
-        } else if el.kind == "equation" {
-          // 公式有 '(' ')'
-          let num = counter(el.kind + "-chapter" + str(chapt)).at(loc).at(0) + 1
-          it.element.supplement
-          " ("
-          str(chapt)
-          "-"
-          str(num)
-          ")"
-        } else {
-          it
-        }
-      ]
-    } else {
-      it
-    }
-  }
-
   // 图表公式的排版
-  show figure: it => {
-    set align(center)
-    if it.kind == "image" {
-      set text(font: heiti, size: 12pt)
-      it.body
-      it.supplement
-      " " + it.counter.display(it.numbering)
-      "　" + it.caption.body
-      locate(loc => {
-        let chapt = counter(heading).at(loc).at(0)
-        let c = counter("image-chapter" + str(chapt))
-        c.step()
-      })
-    } else if it.kind == "table" {
-      set text(font: heiti, size: 12pt)
-      it.supplement
-      " " + it.counter.display(it.numbering)
-      "　" + it.caption.body
-      set text(font: songti, size: 10.5pt)
-      it.body
-      locate(loc => {
-        let chapt = counter(heading).at(loc).at(0)
-        let c = counter("table-chapter" + str(chapt))
-        c.step()
-      })
-    } else if it.kind == "equation" {
-      // 通过大比例来达到中间和靠右的排布
-      grid(
-        columns: (20fr, 1fr),
-        it.body,
-        align(center + horizon, 
-          it.counter.display(it.numbering)
-        )
-      )
-      locate(loc => {
-        let chapt = counter(heading).at(loc).at(0)
-        let c = counter("equation-chapter" + str(chapt))
-        c.step()
-      })
-    } else {
-      it
-    }
-  }
+  show: _set_figure
+  show: _set_numbering
+
   set page(paper: "a4", margin: (
     top: 2.5cm,
     bottom: 2.5cm,
