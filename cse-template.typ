@@ -413,6 +413,12 @@
     set block(above: 1.5em, below: 1.5em)
     it
   } + empty_par()
+  show figure: it => {
+    it + empty_par()
+  }
+  show math.equation: it => {
+    it + empty_par()
+  }
 
   pagebreak()
   counter(page).update(1)
