@@ -31,17 +31,20 @@
     show figure: i-figured.show-figure.with(numbering: "1-1")
     show math.equation: i-figured.show-equation.with(numbering: "(1-1)")
 
+
     body
 }
 
-// 设置图表与标题中文前缀
+// 设置图表
 #let _set_figure(body) ={
     show figure.where(kind: image): set figure(supplement: [图])
 
     show figure.where(kind: table): set figure(supplement: [表])
     show figure.where(kind: table): set figure.caption(position: top)
 
+    // 使用正确的编号与图表标题字体及分隔符
     show figure.caption: set text(font: heiti)
+    set figure.caption(separator: "　")
 
     set heading(supplement: [节])
     set math.equation(supplement: [式])
