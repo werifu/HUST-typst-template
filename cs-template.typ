@@ -47,7 +47,7 @@
     set figure.caption(separator: "　")
 
     set heading(supplement: [节])
-    set math.equation(supplement: [式])
+    set math.equation(supplement: [公式])
 
     body
 }
