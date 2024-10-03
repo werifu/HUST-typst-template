@@ -36,6 +36,8 @@
   date: (1926, 8, 17),
   body,
 ) = {
+  /* 全局整体设置 */
+  
   // 设置标题, 需要在图表前设置
   show: _set_heading
   // 图表公式的排版
@@ -44,6 +46,8 @@
   show: _set_numbering
   // 参考文献
   show: _set_references.with(csl_style: "hust-cse-ug.csl")
+  // 修复缩进
+  show: _fix_indent
   // 整体页面设置
   show: _set_cse_page_size
 
@@ -67,8 +71,6 @@
   show: _set_cse_page_footer_pre
   // 整体段落与页面设置
   show: _set_cse_page_par
-
-  show: _fix_indent
 
   // 原创性声明与摘要间的空页
   pagebreak()
