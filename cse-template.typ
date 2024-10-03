@@ -11,15 +11,10 @@
 
 #import "utilities/three-line-table.typ": three_line_table
 #import "utilities/indent-funs.typ": *
+#import "utilities/bib-cite.typ": *
 #import "utilities/set-heading.typ": _set_heading
 #import "utilities/set-figure.typ": _set_figure
 #import "utilities/set-numbering.typ": _set_numbering
-
-#let bib_cite(..names) = {
-  for name in names.pos() {
-    cite(name)
-  }
-}
 
 #let project(
   anonymous: false, // 是否匿名化处理
@@ -37,7 +32,7 @@
   body,
 ) = {
   /* 全局整体设置 */
-  
+
   // 设置标题, 需要在图表前设置
   show: _set_heading
   // 图表公式的排版
