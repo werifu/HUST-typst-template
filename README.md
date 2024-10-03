@@ -65,6 +65,13 @@ https://typst.app/project/rqTPs502DAhLTQctaUmbtn
 
 [ ] template.typ 模块化
 
+## 开发指南
+### 内部目录
+* `fonts` 目录: 定义字体集
+* `pages` 目录: 包含了模板用到的各个**独立页面**，例如封面页、声明页、摘要等。
+* `utilities` 目录: 包含了包含了模板使用到的各种自定义辅助函数。
+* `variable` 目录: 包含了创建模板变种（原始模板以 CSE 格式为基础）所需的辅助函数
+* `xxx-template.typ` 模板及其变种
 
 ## 参考及致谢
 
