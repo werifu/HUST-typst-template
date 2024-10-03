@@ -198,9 +198,11 @@
   set par(justify: true, leading: 1.24em, first-line-indent: 2em)
   show par: set block(spacing: 1.24em)
 
-  set heading(numbering: (..nums) => {
-    nums.pos().map(str).join(".") + "　"
-  })
+  set heading(numbering: "1.1.1")
+  show heading: it =>{
+    it.numbering + "　"
+    it.body
+  }
   show heading.where(level: 1): it => {
     set align(center)
     set text(weight: "bold", font: heiti, size: 18pt)
