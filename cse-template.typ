@@ -1,22 +1,18 @@
 #import "@preview/lovelace:0.2.0": *
-
-#let heiti = ("Times New Roman", "Heiti SC", "Heiti TC", "SimHei")
-#let songti = ("Times New Roman", "Songti SC", "Songti TC", "SimSun")
-#let zhongsong = ("Times New Roman","STZhongsong", "SimSun")
+#import "fonts/font_def.typ": *
+#import "pages/acknowledgement.typ": acknowledgement
+#import "pages/chinese_outline.typ": chinese_outline
+#import "pages/declaration.typ": declaration
+#import "pages/zh_abstract_page.typ": zh_abstract_page
+#import "pages/en_abstract_page.typ": en_abstract_page
+#import "pages/references.typ": _set_references
+#import "utilities/three_line_table.typ": three_line_table
+#import "utilities/indent_funs.typ": *
 
 #let bib_cite(..names) = {
   for name in names.pos() {
     cite(name)
   }
-}
-
-#let indent() = {
-  box(width: 2em)
-}
-
-#let indent_par(body) = {
-  box(width: 1.8em)
-  body
 }
 
 // 设置编号 (引用时, 需要使用标签)
@@ -48,199 +44,6 @@
     set math.equation(supplement: [公式])
 
     body
-}
-
-#let empty_par() = {
-  v(-1em)
-  box()
-}
-
-// inspired from https://github.com/lucifer1004/pkuthss-typst.git
-#let chinese_outline() = {
-  align(center)[
-    #text(font: heiti, size: 18pt, "目　　录")
-  ]
-
-  set text(font: songti, size: 12pt)
-  // 临时取消目录的首行缩进
-  set par(leading: 1.24em, first-line-indent: 0pt)
-  locate(loc => {
-    let elements = query(heading.where(outlined: true), loc)
-    for el in elements {
-      // 计算机学院要求不出现三级以上标题
-      if el.level > 2 {
-        continue
-      }
-
-      // 是否有 el 位于前面，前面的目录中用拉丁数字，后面的用阿拉伯数字
-      let before_toc = query(heading.where(outlined: true).before(loc), loc).find((one) => {one.body == el.body}) != none
-      let page_num = if before_toc {
-        numbering("I", counter(page).at(el.location()).first())
-      } else {
-        counter(page).at(el.location()).first()
-      }
-
-      link(el.location())[#{
-        // acknoledgement has no numbering
-        let chapt_num = if el.numbering != none {
-          numbering(el.numbering, ..counter(heading).at(el.location()))
-        } else {none}
-
-        if el.level == 1 {
-          set text(weight: "black")
-          if chapt_num == none {} else {
-            chapt_num
-            "　　"
-          }
-          el.body
-        } else {
-          chapt_num
-          "　"
-          el.body
-        }
-      }]
-
-      // 填充 ......
-      box(width: 1fr, h(0.5em) + box(width: 1fr, repeat[.]) + h(0.5em))
-      [#page_num]
-      linebreak()
-    }
-  })
-}
-
-// 原创性声明和授权书
-#let declaration(anonymous: false) = {
-  set text(font: songti, 12pt)
-
-  v(5em)
-  align(center)[
-    #text(font: heiti, size: 18pt)[
-      学位论文原创性声明
-    ]
-  ]
-  text(font: songti, size: 12pt)[
-    #set par(justify: false, leading: 1.24em, first-line-indent: 2em)
-    本人郑重声明：所呈交的论文是本人在导师的指导下独立进行研究所取得的 研究成果。除了文中特别加以标注引用的内容外，本论文不包括任何其他个人或集体已经发表或撰写的成果作品。本人完全意识到本声明的法律后果由本人承担。
-  ]
-  v(2em)
-  align(right)[
-    #if not anonymous {
-      text("作者签名：　　　　　　　年　　月　　日")
-    } else {
-      text("作者签名：██████████年███月███日")
-    }
-  ]
-  
-  v(6em)
-  align(center)[
-    #text(font: heiti, size: 18pt)[
-      学位论文版权使用授权书
-    ]
-  ]
-  text(font: songti, size: 12pt)[
-    #set par(justify: false, leading: 1.24em, first-line-indent: 2em)
-    #if not anonymous [
-      本学位论文作者完全了解学校有关保障、使用学位论文的规定，同意学校保留并向有关学位论文管理部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅。本人授权省级优秀学士论文评选机构将本学位论文的全部或部分内容编入有关数据进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。
-    ] else [
-      本学位论文作者完全了解学校有关保障、使用学位论文的规定，同意学校保留并向有关学位论文管理部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅。本人授权█████████████将本学位论文的全部或部分内容编入有关数据进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。
-    ]
-    
-
-    学位论文属于 1、保密 □，在#h(3em)年解密后适用本授权书。
-
-    #h(6.3em) 2、不保密 □
-
-    #h(6.3em)请在以上相应方框内打 “√”
-  ]
-
-  v(3em)
-  align(right)[
-    #if not anonymous {
-      text("作者签名：　　　　　　　年　　月　　日")
-    } else {
-      text("作者签名：██████████年███月███日")
-    }
-  ]
-
-  align(right)[
-    #if not anonymous {
-      text("导师签名：　　　　　　　年　　月　　日")
-    } else {
-      text("导师签名：██████████年███月███日")
-    }
-  ]
-}
-
-// 参考文献
-#let references(path) = {
-  // 这个取消目录里的 numbering
-  set heading(level: 1, numbering: none)
-
-  set par(justify: false, leading: 1.24em, first-line-indent: 2em)
-
-  bibliography(path, title:"参考文献", style: "./hust-cse-ug.csl")
-}
-
-
-// 致谢，请手动调用
-#let acknowledgement(body) = {
-  // 这个取消目录里的 numbering
-  set heading(level: 1, numbering: none)
-  show <_thx>: {
-    // 这个取消展示时的 numbering
-    set heading(level: 1, numbering: none)
-    set align(center)
-    set text(weight: "bold", font: heiti, size: 18pt)
-
-    "致　　谢"
-  } + empty_par()
-
-  
-  [= 致谢 <_thx>]
-
-  body
-}
-
-// 中文摘要
-#let zh_abstract_page(abstract, keywords: ()) = {
-  set heading(level: 1, numbering: none)
-  show <_zh_abstract_>: {
-    align(center)[
-      #text(font: heiti, size: 18pt, "摘　　要")
-    ]
-  }
-  [= 摘要 <_zh_abstract_>]
-
-  set text(font: songti, size: 12pt)
-
-  abstract
-  par(first-line-indent: 0em)[
-    #text(weight: "bold", font: heiti, size: 12pt)[
-      关键词：
-      #keywords.join("；")
-    ]
-  ]
-}
-
-// 英文摘要
-#let en_abstract_page(abstract, keywords: ()) = {
-  set heading(level: 1, numbering: none)
-  show <_en_abstract_>: {
-    align(center)[
-      #text(font: heiti, size: 18pt, "Abstract")
-    ]
-  }
-  [= Abstract <_en_abstract_>]
-
-  set text(font: songti, size: 12pt)
-
-  abstract
-  par(first-line-indent: 0em)[
-    #text(weight: "bold", font: heiti, size: 12pt)[
-      Key Words: 
-      #keywords.join("; ")
-    ]
-  ]
 }
 
 #let project(
@@ -466,51 +269,8 @@
     it
   }
 
+  // 参考文献
+  show: _set_references.with(csl_style: "hust-cse-ug.csl")
+
   body
 }
-
-// 三线表
-#let tlt_header(content) = {
-  set align(center)
-  rect(
-    width: 100%,
-    stroke: (bottom: 1pt),
-    [#content],
-  )
-}
-
-#let tlt_cell(content) = {
-  set align(center)
-  rect(
-    width: 100%,
-    stroke: none,
-    [#content]
-  )
-}
-
-#let tlt_row(r) = {
-  (..r.map(tlt_cell).flatten())
-}
-
-#let three_line_table(values) = {
-  rect(
-    stroke: (bottom: 1pt, top: 1pt),
-    inset: 0pt,
-    outset: 0pt,
-    grid(
-      columns: (auto),
-      rows: (auto),
-      // table title
-      grid(
-        columns: values.at(0).len(),
-        ..values.at(0).map(tlt_header).flatten()
-      ),
-
-      grid(
-        columns: values.at(0).len(),
-        ..values.slice(1).map(tlt_row).flatten()
-      ),
-    )
-  )
-}
-
