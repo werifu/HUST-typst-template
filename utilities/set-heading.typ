@@ -1,4 +1,4 @@
-#import "../fonts/font_def.typ": *
+#import "../fonts/font-def.typ": *
 
 #let _set_heading(body) ={
     set heading(numbering: "1.1.1")

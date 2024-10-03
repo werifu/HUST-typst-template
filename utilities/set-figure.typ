@@ -1,4 +1,4 @@
-#import "../fonts/font_def.typ": *
+#import "../fonts/font-def.typ": *
 
 // 设置图表
 #let _set_figure(body) ={

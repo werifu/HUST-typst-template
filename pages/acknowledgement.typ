@@ -1,5 +1,5 @@
-#import "../fonts/font_def.typ": *
-#import "../utilities/indent_funs.typ": *
+#import "../fonts/font-def.typ": *
+#import "../utilities/indent-funs.typ": *
 
 // 致谢，请手动调用
 #let acknowledgement(body) = {

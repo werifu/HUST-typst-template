@@ -1,4 +1,4 @@
-#import "../fonts/font_def.typ": *
+#import "../fonts/font-def.typ": *
 
 // inspired from https://github.com/lucifer1004/pkuthss-typst.git
 #let chinese_outline() = {

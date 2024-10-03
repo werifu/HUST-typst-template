@@ -1,4 +1,4 @@
-#import "../fonts/font_def.typ": *
+#import "../fonts/font-def.typ": *
 
 // 原创性声明和授权书
 #let declaration(anonymous: false) = {

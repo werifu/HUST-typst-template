@@ -1,4 +1,4 @@
-#import "../fonts/font_def.typ": *
+#import "../fonts/font-def.typ": *
 
 #let en_abstract_page(abstract, keywords: ()) = {
   set heading(level: 1, numbering: none)
