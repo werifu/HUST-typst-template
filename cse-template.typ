@@ -8,42 +8,14 @@
 #import "pages/references.typ": _set_references
 #import "utilities/three_line_table.typ": three_line_table
 #import "utilities/indent_funs.typ": *
-#import "utilities/heading.typ": _set_heading
+#import "utilities/set_heading.typ": _set_heading
+#import "utilities/set_figure.typ": _set_figure
+#import "utilities/set_numbering.typ": _set_numbering
 
 #let bib_cite(..names) = {
   for name in names.pos() {
     cite(name)
   }
-}
-
-// 设置编号 (引用时, 需要使用标签)
-#let _set_numbering(body) ={
-    import "@preview/i-figured:0.2.4"
-
-    set heading(numbering: "1.1.1")
-
-    show heading: i-figured.reset-counters
-    show figure: i-figured.show-figure.with(numbering: "1-1")
-    show math.equation: i-figured.show-equation.with(numbering: "(1-1)")
-
-    body
-}
-
-// 设置图表
-#let _set_figure(body) ={
-    // 设置前缀
-    show figure.where(kind: image): set figure(supplement: [图])
-
-    show figure.where(kind: table): set figure(supplement: [表])
-    show figure.where(kind: table): set figure.caption(position: top)
-
-    // 使用正确的编号与图表标题字体及分隔符
-    show figure.caption: set text(font: heiti)
-    set figure.caption(separator: "　")
-
-    set math.equation(supplement: [公式])
-
-    body
 }
 
 #let project(
@@ -61,9 +33,13 @@
   date: (1926, 8, 17),
   body,
 ) = {
+  // 设置标题, 需要在图表前设置
+  show: _set_heading
   // 图表公式的排版
   show: _set_figure
   show: _set_numbering
+  // 参考文献
+  show: _set_references.with(csl_style: "hust-cse-ug.csl")
 
   set page(paper: "a4", margin: (
     top: 2.5cm,
@@ -198,9 +174,7 @@
   set par(justify: true, leading: 1.24em, first-line-indent: 2em)
   show par: set block(spacing: 1.24em)
 
-  show: _set_heading
-
-  show: fix_indent
+  show: _fix_indent
 
   pagebreak()
   counter(page).update(1)
@@ -244,9 +218,6 @@
     set block(inset: 5pt, fill: rgb(217, 217, 217, 1), width: 100%)
     it
   }
-
-  // 参考文献
-  show: _set_references.with(csl_style: "hust-cse-ug.csl")
 
   body
 }
