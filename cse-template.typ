@@ -1,16 +1,16 @@
 #import "@preview/lovelace:0.2.0": *
-#import "fonts/font_def.typ": *
+#import "fonts/font-def.typ": *
 #import "pages/acknowledgement.typ": acknowledgement
-#import "pages/chinese_outline.typ": chinese_outline
+#import "pages/chinese-outline.typ": chinese_outline
 #import "pages/declaration.typ": declaration
-#import "pages/zh_abstract_page.typ": zh_abstract_page
-#import "pages/en_abstract_page.typ": en_abstract_page
+#import "pages/zh-abstract-page.typ": zh_abstract_page
+#import "pages/en-abstract-page.typ": en_abstract_page
 #import "pages/references.typ": _set_references
-#import "utilities/three_line_table.typ": three_line_table
-#import "utilities/indent_funs.typ": *
-#import "utilities/set_heading.typ": _set_heading
-#import "utilities/set_figure.typ": _set_figure
-#import "utilities/set_numbering.typ": _set_numbering
+#import "utilities/three-line-table.typ": three_line_table
+#import "utilities/indent-funs.typ": *
+#import "utilities/set-heading.typ": _set_heading
+#import "utilities/set-figure.typ": _set_figure
+#import "utilities/set-numbering.typ": _set_numbering
 
 #let bib_cite(..names) = {
   for name in names.pos() {
