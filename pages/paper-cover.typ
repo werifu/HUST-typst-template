@@ -1,8 +1,8 @@
-// CSE 格式的封面
+// 默认本科生毕业论文的封面 (CSE 格式)
 
 #import "../fonts/font-def.typ": *
 
-#let cse_cover(anonymous, title, school, class, author, id, mentor, date) = {
+#let paper_cover(anonymous, title, school, class, author, id, mentor, date) = {
   align(center)[
     // hust logo
     #v(20pt)

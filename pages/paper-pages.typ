@@ -1,8 +1,8 @@
-// CSE 格式的页面设置
+// 默认本科生毕业论文的页面设置 (CSE 格式)
 #import "../fonts/font-def.typ": *
 
 // 页面大小
-#let _set_cse_page_size(body) = {
+#let _set_paper_page_size(body) = {
     set page(paper: "a4", margin: (
         top: 2.5cm,
         bottom: 2.5cm,
@@ -14,7 +14,7 @@
 }
 
 // 页面布局
-#let _set_cse_page_par(body) = {
+#let _set_paper_page_par(body) = {
     set text(font: songti, 12pt)
     set par(justify: true, leading: 1.24em, first-line-indent: 2em)
     show par: set block(spacing: 1.24em)
@@ -23,7 +23,7 @@
 }
 
 // 页眉
-#let _set_cse_page_header(anonymous: false, body) = {
+#let _set_paper_page_header(anonymous: false, body) = {
     set page(
         header: {
         set text(font: songti, 10pt, baseline: 8pt, spacing: 3pt)
@@ -42,7 +42,7 @@
 }
 
 // 摘要部分页脚
-#let _set_cse_page_footer_pre(body) = {
+#let _set_paper_page_footer_pre(body) = {
     set page(
         footer: {
         set align(center)
@@ -62,7 +62,7 @@
 }
 
 // 正文部分页脚
-#let _set_cse_page_footer_main(body) = {
+#let _set_paper_page_footer_main(body) = {
     set page(
         footer: {
         set align(center)

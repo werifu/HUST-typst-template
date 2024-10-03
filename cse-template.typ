@@ -6,8 +6,8 @@
 #import "pages/zh-abstract-page.typ": zh_abstract_page
 #import "pages/en-abstract-page.typ": en_abstract_page
 #import "pages/references.typ": _set_references
-#import "pages/cse-cover.typ": cse_cover
-#import "pages/cse-pages.typ": *
+#import "pages/paper-cover.typ": paper_cover
+#import "pages/paper-pages.typ": *
 
 #import "utilities/three-line-table.typ": three_line_table
 #import "utilities/indent-funs.typ": *
@@ -44,12 +44,12 @@
   // 修复缩进
   show: _fix_indent
   // 整体页面设置
-  show: _set_cse_page_size
+  show: _set_paper_page_size
 
   /* 封面与原创性声明 */
 
   // 封面
-  cse_cover(anonymous, title, school, class, author, id, mentor, date)
+  paper_cover(anonymous, title, school, class, author, id, mentor, date)
 
   // 原创性声明
   declaration(anonymous: anonymous)
@@ -61,11 +61,11 @@
   /* 目录与摘要 */
 
   // 整体页眉
-  show: _set_cse_page_header.with(anonymous: anonymous)
+  show: _set_paper_page_header.with(anonymous: anonymous)
   // 目录与摘要的页脚
-  show: _set_cse_page_footer_pre
+  show: _set_paper_page_footer_pre
   // 整体段落与页面设置
-  show: _set_cse_page_par
+  show: _set_paper_page_par
 
   // 原创性声明与摘要间的空页
   pagebreak()
@@ -87,7 +87,7 @@
   /* 正文 */
 
   // 正文的页脚
-  show: _set_cse_page_footer_main
+  show: _set_paper_page_footer_main
 
   counter(page).update(1)
 
