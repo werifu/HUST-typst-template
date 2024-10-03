@@ -40,26 +40,37 @@
   show: _set_heading
   // 图表公式的排版
   show: _set_figure
+  // 图表公式的序号
   show: _set_numbering
   // 参考文献
   show: _set_references.with(csl_style: "hust-cse-ug.csl")
+  // 整体页面设置
   show: _set_cse_page_size
+
+  /* 封面与原创性声明 */
 
   // 封面
   cse_cover(anonymous, title, school, class, author, id, mentor, date)
 
   // 原创性声明
   declaration(anonymous: anonymous)
-  pagebreak()
 
+  // 进入下一部分
+  pagebreak()
   counter(page).update(0)
 
+  /* 目录与摘要 */
+
+  // 整体页眉
   show: _set_cse_page_header.with(anonymous: anonymous)
+  // 目录与摘要的页脚
   show: _set_cse_page_footer_pre
-  show: _set_cse_page_layout
+  // 整体段落与页面设置
+  show: _set_cse_page_par
 
   show: _fix_indent
 
+  // 原创性声明与摘要间的空页
   pagebreak()
   counter(page).update(1)
 
@@ -75,6 +86,8 @@
 
   // 目录
   chinese_outline()
+
+  /* 正文 */
 
   // 正文的页脚
   show: _set_cse_page_footer_main

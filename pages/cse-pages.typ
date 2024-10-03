@@ -14,7 +14,7 @@
 }
 
 // 页面布局
-#let _set_cse_page_layout(body) = {
+#let _set_cse_page_par(body) = {
     set text(font: songti, 12pt)
     set par(justify: true, leading: 1.24em, first-line-indent: 2em)
     show par: set block(spacing: 1.24em)
