@@ -2,14 +2,14 @@
 
 #import "../fonts/font-def.typ": *
 
-#let paper_cover(anonymous, title, school, class, author, id, mentor, date) = {
+#let paper_cover(cover_logo_path: "../assets/cse-hust.png", anonymous, title, school, class, author, id, mentor, date) = {
   align(center)[
     // hust logo
     #v(20pt)
 
     // 匿名化处理需要去掉个人、机构信息
     #let logo_path = if not anonymous {
-      "../assets/cse-hust.png"
+      cover_logo_path
     } else {
       "../assets/black.png"
     }

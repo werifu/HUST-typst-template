@@ -49,7 +49,9 @@
   /* 封面与原创性声明 */
 
   // 封面
-  paper_cover(anonymous, title, school, class, author, id, mentor, date)
+  paper_cover(cover_logo_path: "../assets/cse-hust.png", 
+    anonymous, title, school, class, author, id, mentor, date
+  )
 
   // 原创性声明
   declaration(anonymous: anonymous)
