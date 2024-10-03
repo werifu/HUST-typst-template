@@ -91,12 +91,5 @@
 
   counter(page).update(1)
 
-  // 代码块(TODO: 加入行数)
-  show raw: it => {
-    set text(font: songti, 12pt)
-    set block(inset: 5pt, fill: rgb(217, 217, 217, 1), width: 100%)
-    it
-  }
-
   body
 }
