@@ -12,3 +12,18 @@
   v(-1em)
   box()
 }
+
+#let fix_indent(body) = {
+  // 首段不缩进，手动加上 box
+  show heading: it => {
+    it + empty_par()
+  }
+  show figure: it => {
+    it + empty_par()
+  }
+  show math.equation: it => {
+    it + empty_par()
+  }  
+
+  body
+}

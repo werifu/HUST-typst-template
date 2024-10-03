@@ -212,19 +212,13 @@
     set block(above: 1.5em, below: 1.5em)
     it
   }
-
-  // 首段不缩进，手动加上 box
-  show heading: it => {
+  show heading.where(level: 3): it => {
     set text(weight: "bold", font: heiti, size: 12pt)
     set block(above: 1.5em, below: 1.5em)
     it
-  } + empty_par()
-  show figure: it => {
-    it + empty_par()
   }
-  show math.equation: it => {
-    it + empty_par()
-  }
+
+  show: fix_indent
 
   pagebreak()
   counter(page).update(1)
