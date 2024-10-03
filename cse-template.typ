@@ -200,8 +200,16 @@
 
   set heading(numbering: "1.1.1")
   show heading: it =>{
-    it.numbering + "　"
-    it.body
+    if it != none {
+      set par(first-line-indent: 0em)
+      if it.has("numbering") and it.numbering != none {
+        numbering(it.numbering, ..counter(heading).at(it.location()))
+        [　 ]
+      }
+      it.body
+    } else {
+      ""
+    }
   }
   show heading.where(level: 1): it => {
     set align(center)
