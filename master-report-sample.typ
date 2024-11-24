@@ -1,5 +1,5 @@
 // #import "cs-template.typ": *
-#import "master-template.typ": *
+#import "master-report-template.typ": *
 #import "@preview/codelst:2.0.0": sourcecode
 #show: setup-lovelace
 
