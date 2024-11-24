@@ -35,7 +35,6 @@
 
 == typst 介绍
 
-
 typst 是最新最热的标记文本语言，定位与 LaTeX 类似，具有极强的排版能力，通过一定的语法写文档，然后生成 pdf 文件。与 LaTeX 相比有以下的优势：
 
 
@@ -332,4 +331,4 @@ a4纸，上下空2.5cm，左右空3cm
 
 #pagebreak()
 
-#references("./ref.bib")
+#bibliography("./ref.bib")
