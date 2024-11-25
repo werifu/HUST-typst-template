@@ -325,4 +325,4 @@ a4纸，上下空2.5cm，左右空3cm
 
 #pagebreak()
 
-#references("./ref.bib")
+#bibliography("./ref.bib")
