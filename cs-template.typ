@@ -58,9 +58,13 @@
   // 原创性声明
   declaration(anonymous: anonymous)
 
-  // 进入下一部分
+  // 原创性声明与摘要间的空页
   pagebreak()
   counter(page).update(0)
+
+  // 进入下一部分
+  pagebreak()
+  counter(page).update(1)
 
   /* 目录与摘要 */
 
@@ -70,10 +74,6 @@
   show: _set_paper_page_footer_pre
   // 整体段落与页面设置
   show: _set_paper_page_par
-
-  // 原创性声明与摘要间的空页
-  pagebreak()
-  counter(page).update(1)
 
   // 摘要
   cs_zh_abstract_page(abstract_zh, keywords: keywords_zh)
