@@ -21,7 +21,7 @@
   show figure: it => {
     it + empty_par()
   }
-  show math.equation: it => {
+  show math.equation.where(block: true): it => {
     it + empty_par()
   }  
 
