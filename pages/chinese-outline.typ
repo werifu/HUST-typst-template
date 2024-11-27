@@ -32,7 +32,7 @@
         } else {none}
 
         if el.level == 1 {
-          set text(weight: "black")
+          set text(weight: "bold")
           if chapt_num == none {} else {
             chapt_num
             "　　"
