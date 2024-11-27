@@ -1,4 +1,7 @@
 #import "@preview/lovelace:0.2.0": *
+// 使用伪粗体修复中文粗体不能正确显示的问题
+#import "@preview/cuti:0.3.0": show-cn-fakebold
+
 #import "fonts/font-def.typ": *
 #import "pages/acknowledgement.typ": acknowledgement
 #import "pages/chinese-outline.typ": chinese_outline
@@ -47,6 +50,8 @@
   show: _fix_indent
   // 整体页面设置
   show: _set_paper_page_size
+  // 修复中文粗体不能正确显示的问题
+  show: show-cn-fakebold
 
   /* 封面与原创性声明 */
 
