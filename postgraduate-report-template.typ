@@ -62,6 +62,7 @@
     major: major,
     suporvisor: suporvisor,
     college: college,
+    asymmetric_margin: asymmetric_margin,
   )
 
   // 评分页
@@ -80,7 +81,7 @@
     margin: if asymmetric_margin {
       (left: 2.7cm, right: 1.1cm, top: 1.6cm, bottom: 1.5cm)
     } else {
-      auto
+      (x: 3.18cm, y: 2.54cm)
     }
   )
 

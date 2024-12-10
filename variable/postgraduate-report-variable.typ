@@ -8,7 +8,16 @@
   college: [],
   subject: [],
   title: [],
+  asymmetric_margin: false,
 ) = {
+  set page(
+    margin: if asymmetric_margin {
+      (left: 2.7cm, right: 1.1cm, top: 1.6cm, bottom: 1.5cm)
+    } else {
+      (x: 3.18cm, y: 2.54cm)
+    }
+  )
+
   set text(size: 10.5pt)
   set align(center)
   v(5em)
@@ -47,6 +56,8 @@
   v(113.4pt)
   [*华中科技大学研究生院制*]
   pagebreak()
+
+  set page(margin: (x: 3.18cm, y: 2.54cm))
 
   v(63pt)
   text(size: 24pt, tracking: 3pt, font: "KaiTi")[*填表注意事项*]
