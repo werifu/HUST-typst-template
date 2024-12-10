@@ -34,6 +34,7 @@
   abstract_en: [],
   keywords: (),
   keywords_en: (),
+  asymmetric_margin: false,
 ) = {
 
   /* 全局整体设置 */
@@ -74,6 +75,14 @@
   show: _set_paper_page_footer_pre
   // 整体段落与页面设置
   show: _set_paper_page_par
+
+  set page(
+    margin: if asymmetric_margin {
+      (left: 2.7cm, right: 1.1cm, top: 1.6cm, bottom: 1.5cm)
+    } else {
+      auto
+    }
+  )
 
   // 原创性声明与摘要间的空页
   // pagebreak()
