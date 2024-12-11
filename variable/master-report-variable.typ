@@ -1,6 +1,6 @@
 #import "../fonts/font-def.typ": *
 
-#let postgraduate-report-cover(
+#let master-report-cover(
   author: [],
   student-id: [],
   major: [],
@@ -78,7 +78,7 @@
   ]
 }
 
-#let _postgraduate_report_set_paper_page_header(it) = {
+#let _master_report_set_paper_page_header(it) = {
   set page(
     header: [
       #set par(spacing: 5pt)
@@ -90,7 +90,7 @@
   it
 }
 
-#let postgraduate-report-last-page(date) = {
+#let master-report-last-page(date) = {
   pagebreak()
   set page(
     header: [],

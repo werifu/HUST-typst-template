@@ -18,7 +18,7 @@
 #import "utilities/set-figure.typ": _set_figure
 #import "utilities/set-numbering.typ": _set_numbering
 
-#import "variable/postgraduate-report-variable.typ": *
+#import "variable/master-report-variable.typ": *
 
 #let project(
   subject: [],
@@ -55,7 +55,7 @@
   // 修复中文粗体不能正确显示的问题
   show: show-cn-fakebold
 
-  postgraduate-report-cover(
+  master-report-cover(
     title: title,
     subject: subject,
     author: author,
@@ -67,11 +67,11 @@
   )
 
   // 评分页
-  // postgraduate_exam_score()
+  // master_exam_score()
 
   counter(page).update(0)
   // 页眉
-  show: _postgraduate_report_set_paper_page_header
+  show: _master_report_set_paper_page_header
 
   // 目录与摘要的页脚
   show: _set_paper_page_footer_pre
@@ -120,5 +120,5 @@
     pagebreak(weak: true, to: "odd")
   }
 
-  postgraduate-report-last-page(date)
+  master-report-last-page(date)
 }

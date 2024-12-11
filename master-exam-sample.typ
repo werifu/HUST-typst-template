@@ -1,32 +1,24 @@
-#import "postgraduate-report-template.typ": *
+// #import "cs-template.typ": *
+#import "master-exam-template.typ": *
 #import "@preview/codelst:2.0.0": sourcecode
 #show: setup-lovelace
 
 #let algorithm = algorithm.with(supplement: "算法")
 
 
-#show: project.with(
-  asymmetric_margin: true,
-  padding_page: true,
-  title: [基于 ChatGPT 的狗屁通文章生成器],
-  subject: [研究生（XX）报告],
-  author: [你的名字],
-  major: [你的专业],
-  id: [M2024xxxxx],
-  suporvisor: [你的老板],
-  college: [你的学院],
-  date: datetime(year: 2024, month: 12, day: 9),
-  abstract: [
-    *注：该模板中如不填写 `abstract` 字段，则不会出现摘要页，在编写课程报告时可以删除。*
 
-    先帝创业未半而中道崩殂，今天下三分，益州疲弊，此诚危急存亡之秋也。然侍卫之臣不懈于内，忠志之士忘身于外者，盖追先帝之殊遇，欲报之于陛下也。诚宜开张圣听，以光先帝遗德，恢弘志士之气，不宜妄自菲薄，引喻失义，以塞忠谏之路也。
+#show: project.with(
+  anonymous: false,
+  author: "你的名字",
+  grade: "你的年级",
+  kind: "报告",
+  id: "M2024xxxxx",
+  course: "这门课",
+  date: (2024, 12, 30),
+  abstract: [先帝创业未半而中道崩殂，今天下三分，益州疲弊，此诚危急存亡之秋也。然侍卫之臣不懈于内，忠志之士忘身于外者，盖追先帝之殊遇，欲报之于陛下也。诚宜开张圣听，以光先帝遗德，恢弘志士之气，不宜妄自菲薄，引喻失义，以塞忠谏之路也。
 
   宫中府中，俱为一体；陟罚臧否，不宜异同。若有作奸犯科及为忠善者，宜付有司论其刑赏，以昭陛下平明之理，不宜偏私，使内外异法也。],
-  keywords:("关键字1", "关键字2"),
-  abstract_en: [The founding emperor passed away before his endeavor was half completed, and now the empire is divided into three parts. Yizhou is exhausted and in decline, and this is truly a critical moment of survival or destruction. However, the palace guards are tirelessly serving within, and loyal subjects are sacrificing themselves outside, all in order to repay the late emperor's kindness and show loyalty to the current emperor. It is appropriate to listen to wise advice, to honor the late emperor's virtues, to inspire the courage of loyal subjects, and not to belittle oneself or distort the truth, in order to keep the path of loyal counsel open. 
-
-  The palace and government are one entity, and punishments should be consistent. If there are those who commit crimes or show loyalty and virtue, they should be judged by the legal system to demonstrate your fairness as emperor, rather than showing partiality that would create different laws for those inside and outside the palace.],
-  keywords_en:("Something", "Something else"),
+  keywords:("Something", "Something else")
 )
 
 
