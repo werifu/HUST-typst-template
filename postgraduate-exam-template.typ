@@ -17,7 +17,7 @@
 #import "utilities/set-figure.typ": _set_figure
 #import "utilities/set-numbering.typ": _set_numbering
 
-#import "variable/master-variable.typ": *
+#import "variable/postgraduate-exam-variable.typ": *
 
 #let project(
   anonymous: false, // 是否匿名化处理
@@ -115,7 +115,7 @@
 
   //   #pagebreak()
   // ]
-  master_report_cover(
+  postgraduate_exam_cover(
     author: author,
     id: id,
     grade: grade,
@@ -125,11 +125,11 @@
   )
 
   // 评分页
-  master_report_score()
+  postgraduate_exam_score()
 
   counter(page).update(0)
   // 页眉
-  show: _master_set_paper_page_header.with(anonymous: anonymous)
+  show: _postgraduate_exam_set_paper_page_header.with(anonymous: anonymous)
 
 // 目录与摘要的页脚
   show: _set_paper_page_footer_pre
