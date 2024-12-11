@@ -35,6 +35,7 @@
   keywords: (),
   keywords_en: (),
   asymmetric_margin: false,
+  padding_page: true,
 ) = {
 
   /* 全局整体设置 */
@@ -103,6 +104,9 @@
 
   // 目录
   chinese_outline()
+  if padding_page {
+    pagebreak(weak: true, to: "odd")
+  }
 
   /* 正文 */
 
@@ -112,6 +116,9 @@
   counter(page).update(1)
 
   body
+  if padding_page {
+    pagebreak(weak: true, to: "odd")
+  }
 
   postgraduate-report-last-page(date)
 }

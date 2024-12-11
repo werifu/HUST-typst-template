@@ -7,6 +7,7 @@
 
 #show: project.with(
   asymmetric_margin: true,
+  padding_page: true,
   title: [基于 ChatGPT 的狗屁通文章生成器],
   subject: [研究生（XX）报告],
   author: [你的名字],
