@@ -7,6 +7,7 @@
 #import "pages/chinese-outline.typ": chinese_outline
 #import "pages/declaration.typ": declaration
 #import "pages/zh-abstract-page.typ": zh_abstract_page
+#import "pages/en-abstract-page.typ": en_abstract_page
 #import "pages/references.typ": _set_references
 #import "pages/paper-pages.typ": *
 
@@ -17,19 +18,24 @@
 #import "utilities/set-figure.typ": _set_figure
 #import "utilities/set-numbering.typ": _set_numbering
 
-#import "variable/master-variable.typ": *
+#import "variable/master-report-variable.typ": *
 
 #let project(
-  anonymous: false, // 是否匿名化处理
-  author: "",
-  grade: "",
-  kind: "",
-  id: "",
-  course: "",
-  date: (1926, 8, 17),
+  subject: [],
+  title: [],
+  author: [],
+  major: [],
+  id: [],
+  suporvisor: [],
+  college: [],
+  date: datetime.today(),
   body,
-  abstract: "",
+  abstract: [],
+  abstract_en: [],
   keywords: (),
+  keywords_en: (),
+  asymmetric_margin: false,
+  padding_page: true,
 ) = {
 
   /* 全局整体设置 */
@@ -49,104 +55,58 @@
   // 修复中文粗体不能正确显示的问题
   show: show-cn-fakebold
 
-  // 封面
-  //   #set text(
-  //     font: songti,
-  //     size: 16pt,
-  //   )
-  //   #v(100pt)
-
-  //   #text(font: songti, size: 26pt)[
-  //     #align(center)[
-  //       华 中 科 技 大 学
-
-  //       研究生课程考试答题本
-  //     ]
-  //   ]
-
-  //   #v(220pt)
-
-  //   #align(center)[
-
-  //     #let info_value(body) = {
-  //       rect(
-  //         width: 100%,
-  //         inset: 2pt,
-  //         stroke: (
-  //           bottom: 1pt + black,
-  //         ),
-  //         text(
-  //           font: songti,
-  //           size: 16pt,
-  //           bottom-edge: "descender",
-  //         )[
-  //           #body
-  //         ],
-  //       )
-  //     }
-
-  //     #let info_key(body) = {
-  //       rect(
-  //         width: 100%,
-  //         inset: 2pt,
-  //         stroke: none,
-  //         text(
-  //           font: songti,
-  //           size: 16pt,
-  //           bottom-edge: "descender",
-  //         )[
-  //           #body
-  //         ],
-  //       )
-  //     }
-
-  //     #block(width: 18em)[
-  //       #grid(
-  //         columns: (4.3em, 1fr),
-  //         rows: (1.8em),
-  //         gutter: 3pt,
-  //         info_key("考生姓名"), info_value([#author]),
-  //         info_key("考生学号"), info_value([#id]),
-  //         info_key("系、年级"), info_value([#grade]),
-  //         info_key("类        别"), info_value([#kind]),
-  //         info_key("考试科目"), info_value([#course]),
-  //         info_key("考试日期"), info_value([#date.at(0) 年 #date.at(1) 月 #date.at(2) 日]),
-  //       )]]
-
-  //   #pagebreak()
-  // ]
-  master_report_cover(
+  master-report-cover(
+    title: title,
+    subject: subject,
     author: author,
-    id: id,
-    grade: grade,
-    kind: kind,
-    course: course,
-    date: date,
+    student-id: id,
+    major: major,
+    suporvisor: suporvisor,
+    college: college,
+    asymmetric_margin: asymmetric_margin,
   )
 
   // 评分页
-  master_report_score()
+  // master_exam_score()
 
   counter(page).update(0)
   // 页眉
-  show: _master_set_paper_page_header.with(anonymous: anonymous)
+  show: _master_report_set_paper_page_header
 
-// 目录与摘要的页脚
+  // 目录与摘要的页脚
   show: _set_paper_page_footer_pre
   // 整体段落与页面设置
   show: _set_paper_page_par
 
+  set page(
+    margin: if asymmetric_margin {
+      (left: 2.7cm, right: 1.1cm, top: 1.6cm, bottom: 1.5cm)
+    } else {
+      (x: 3.18cm, y: 2.54cm)
+    }
+  )
+
   // 原创性声明与摘要间的空页
-  pagebreak()
+  // pagebreak()
   counter(page).update(1)
 
   // 摘要
-  zh_abstract_page(abstract, keywords: keywords)
+  if abstract != [] {
+    zh_abstract_page(abstract, keywords: keywords)
+    pagebreak()
+  }
 
-  pagebreak()
+  if abstract_en != [] {
+    en_abstract_page(abstract_en, keywords: keywords_en)
+    pagebreak()
+  }
+
 
   // 目录
   chinese_outline()
+  if padding_page {
+    pagebreak(weak: true, to: "odd")
+  }
 
   /* 正文 */
 
@@ -156,4 +116,9 @@
   counter(page).update(1)
 
   body
+  if padding_page {
+    pagebreak(weak: true, to: "odd")
+  }
+
+  master-report-last-page(date)
 }

@@ -1,6 +1,6 @@
 #import "../fonts/font-def.typ": *
 
-#let master_report_cover(
+#let master_exam_cover(
   author: "",
   grade: "",
   kind: "",
@@ -78,7 +78,7 @@
 }
 
 
-#let master_report_score() = {
+#let master_exam_score() = {
   align(center)[
     #text(size: 22pt, font: songti, "评      分")
 
@@ -120,7 +120,7 @@
   ]
 }
 
-#let _master_set_paper_page_header(anonymous: false, body) = {
+#let _master_exam_set_paper_page_header(anonymous: false, body) = {
   set page(header: {
     set text(font: songti, 10pt, baseline: 8pt, spacing: 3pt)
     set align(center)
