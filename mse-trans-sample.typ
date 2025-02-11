@@ -1,5 +1,5 @@
 // #import "cs-template.typ": *
-#import "mes-trans-template.typ": *
+#import "mse-trans-template.typ": *
 #import "@preview/codelst:2.0.0": sourcecode
 #show: setup-lovelace
 
@@ -29,7 +29,7 @@
 
 - 翻译文本如果不需要摘要，可在模板函数内删除
 - 参考文献原文可在导出 pdf 后手动通过 Acrobat 等软件将原文合并到末尾。
-- 译文要求的内容可手动修改函数 `mes_trans_declaration`
+- 译文要求的内容可手动修改函数 `mse_trans_declaration`
 
 = 占位章节
 == XXXX

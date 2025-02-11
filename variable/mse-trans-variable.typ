@@ -2,7 +2,7 @@
 
 #import "../fonts/font-def.typ": *
 
-#let mes_trans_paper_cover(cover_logo_path: "../assets/cs-hust.png", anonymous, title, school, class, author, id, mentor, date) = {
+#let mse_trans_paper_cover(cover_logo_path: "../assets/cs-hust.png", anonymous, title, school, class, author, id, mentor, date) = {
   align(center)[
     // hust logo
     #v(20pt)
@@ -94,7 +94,7 @@
 }
 
 // 译文要求
-#let mes_trans_declaration() = {
+#let mse_trans_declaration() = {
   
   set par(justify: true, leading: 16pt)
 
@@ -211,7 +211,7 @@
 }
 
 // 页眉
-#let _mes_trans_set_paper_page_header(anonymous: false, body) = {
+#let _mse_trans_set_paper_page_header(anonymous: false, body) = {
     set page(
         header: {
         set text(font: songti, 10pt, baseline: 8pt, spacing: 3pt)
@@ -232,7 +232,7 @@
 }
 
 // 页面布局
-#let _mes_trans_set_paper_page_par(body) = {
+#let _mse_trans_set_paper_page_par(body) = {
     set text(font: songti, 10.5pt)
     set par(justify: true, leading: 1.5em, first-line-indent: 2em)
     //set par(spacing: 1.5em)
@@ -241,7 +241,7 @@
 }
 
 // 设置图表
-#let _mes_trans_set_figure(body) ={
+#let _mse_trans_set_figure(body) ={
     // 设置前缀
     show figure.where(kind: image): set figure(supplement: [图])
 
@@ -270,7 +270,7 @@
 }
 
 // 参考文献摘要
-#let mes_trans_abstract(abstract, keywords: ()) ={
+#let mse_trans_abstract(abstract, keywords: ()) ={
 
   set heading(level: 1, numbering: none)
   show <_zh_abstract_>: {

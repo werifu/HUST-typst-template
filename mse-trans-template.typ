@@ -19,7 +19,7 @@
 #import "utilities/set-figure.typ": _set_figure
 #import "utilities/set-numbering.typ": _set_numbering
 
-#import "variable/mes-trans-variable.typ": *
+#import "variable/mse-trans-variable.typ": *
 
 #let project(
   anonymous: false, // 是否匿名化处理
@@ -40,7 +40,7 @@
   // 设置标题, 需要在图表前设置
   show: _mse_trans_set_heading
   // 图表公式的排版
-  show: _mes_trans_set_figure
+  show: _mse_trans_set_figure
   // 图表公式的序号
   show: _set_numbering
   // 参考文献
@@ -55,12 +55,12 @@
   /* 封面与原创性声明 */
 
   // 封面
-  mes_trans_paper_cover(cover_logo_path: "../assets/cs-hust.png", 
+  mse_trans_paper_cover(cover_logo_path: "../assets/cs-hust.png", 
     anonymous, title, school, class, author, id, mentor, date
   )
 
   // 翻译封底
-  mes_trans_declaration()
+  mse_trans_declaration()
 
   // 进入下一部分
   pagebreak()
@@ -69,11 +69,11 @@
   /* 目录与摘要 */
 
   // 整体页眉
-  show: _mes_trans_set_paper_page_header.with(anonymous: anonymous)
+  show: _mse_trans_set_paper_page_header.with(anonymous: anonymous)
   // 目录与摘要的页脚
   show: _set_paper_page_footer_pre
   // 整体段落与页面设置
-  show: _mes_trans_set_paper_page_par
+  show: _mse_trans_set_paper_page_par
 
   /* 正文 */
 
@@ -87,7 +87,7 @@
   ]
 
   // 摘要
-  mes_trans_abstract(abstract_zh, keywords: keywords_zh)
+  mse_trans_abstract(abstract_zh, keywords: keywords_zh)
 
   body
 

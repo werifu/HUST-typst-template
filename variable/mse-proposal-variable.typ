@@ -1,7 +1,7 @@
 #import "../fonts/font-def.typ": *
 #import "@preview/tablex:0.0.9": tablex, rowspanx, colspanx
 
-#let mes_proposal_paper_cover(cover_logo_path: "../assets/cs-hust.png", anonymous, title, school, class, author, id, mentor, date) = {
+#let mse_proposal_paper_cover(cover_logo_path: "../assets/cs-hust.png", anonymous, title, school, class, author, id, mentor, date) = {
   align(center)[
     // hust logo
     #v(20pt)
@@ -88,7 +88,7 @@
 }
 
 // 开题报告填写要求
-#let mes_proposal_declaration() = {
+#let mse_proposal_declaration() = {
   
   set par(justify: true, leading: 20pt)
 
@@ -167,7 +167,7 @@
 }
 
 // 页眉
-#let _mes_proposal_set_paper_page_header(anonymous: false, body) = {
+#let _mse_proposal_set_paper_page_header(anonymous: false, body) = {
     set page(
         header: {
         set text(font: songti, 10pt, baseline: 8pt, spacing: 3pt)
@@ -187,7 +187,7 @@
     body
 }
 
-#let _mes_proposal_set_references(csl_style: "pages/hust-cse-ug.csl", body) = {
+#let _mse_proposal_set_references(csl_style: "pages/hust-cse-ug.csl", body) = {
     set bibliography(title: "主要参考文献", style: csl_style)
 
     show bibliography: it =>{
@@ -202,7 +202,7 @@
 }
 
 // 正文部分页脚
-#let _mes_proposal_set_paper_page_footer_main(body) = {
+#let _mse_proposal_set_paper_page_footer_main(body) = {
     set page(
         footer: {
         set align(center)
@@ -222,7 +222,7 @@
 }
 
 // 开题报告评审表
-#let mes_proposal_inspect(with_annotation: true) = {
+#let mse_proposal_inspect(with_annotation: true) = {
 
   let tb1()={
     set text(size: 10.5pt)
@@ -245,7 +245,7 @@
 
     align(left + top)[
     #if with_annotation [
-      #let huawenkaiti = ("Times New Roman", "STKaiti")
+      #let huawenkaiti = ("Timse New Roman", "STKaiti")
       #text(size: 10.5pt, fill: red, font:huawenkaiti)[
         #h(0.1em)（用蓝、黑钢笔手写或小4号宋体字编辑，签名必须手写。可加页，A4纸双面打印）
         ]

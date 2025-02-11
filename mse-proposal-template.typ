@@ -19,7 +19,7 @@
 #import "utilities/set-figure.typ": _set_figure
 #import "utilities/set-numbering.typ": _set_numbering
 
-#import "variable/mes-proposal-variable.typ": *
+#import "variable/mse-proposal-variable.typ": *
 
 #let project(
   anonymous: false, // 是否匿名化处理
@@ -41,7 +41,7 @@
   // 图表公式的序号
   show: _set_numbering
   // 参考文献
-  show: _mes_proposal_set_references.with(csl_style: "../pages/hust-cse-ug.csl")
+  show: _mse_proposal_set_references.with(csl_style: "../pages/hust-cse-ug.csl")
   // 修复缩进
   show: _fix_indent
   // 整体页面设置
@@ -52,12 +52,12 @@
   /* 封面与原创性声明 */
 
   // 封面
-  mes_proposal_paper_cover(cover_logo_path: "../assets/cs-hust.png", 
+  mse_proposal_paper_cover(cover_logo_path: "../assets/cs-hust.png", 
     anonymous, title, school, class, author, id, mentor, date
   )
 
   // 开题报告填写要求
-  mes_proposal_declaration()
+  mse_proposal_declaration()
 
   // 正文
   pagebreak()
@@ -66,12 +66,12 @@
   /* 正文 */
 
   // 整体页眉
-  show: _mes_proposal_set_paper_page_header.with(anonymous: anonymous)
+  show: _mse_proposal_set_paper_page_header.with(anonymous: anonymous)
   // 整体段落与页面设置
   show: _set_paper_page_par
 
   // 正文的页脚
-  show: _mes_proposal_set_paper_page_footer_main
+  show: _mse_proposal_set_paper_page_footer_main
 
   counter(page).update(1)
 
@@ -79,6 +79,6 @@
 
   pagebreak()
 
-  mes_proposal_inspect()
+  mse_proposal_inspect()
 
 }

@@ -1,5 +1,5 @@
 // #import "cs-template.typ": *
-#import "mes-proposal-template.typ": *
+#import "mse-proposal-template.typ": *
 #import "@preview/codelst:2.0.0": sourcecode
 #show: setup-lovelace
 
@@ -21,14 +21,14 @@
 本模板参考自 2024 年机械学院本科生毕设开题报告模板，基本使用方法与本科生毕设模板相同，主要使用注意如下：
 
 - 开题报告评审表与开题报告填写要求均为作者在官方模板的基础上手动排版，不能保证一定满足要求，如有必要可手动修改对应的函数
-  - 开题报告评审表 `mes_proposal_inspect`
-  - 开题报告填写要求 `mes_proposal_declaration`
+  - 开题报告评审表 `mse_proposal_inspect`
+  - 开题报告填写要求 `mse_proposal_declaration`
 - 课题研究进度安排表可参考#ref(<tbl:arrange>) 
   - 使用时仅需在对应的学期下添加具体的 `[周次], [工作内容]`
   - 需要根据 `[周次], [工作内容]` 的数量修改 `table.cell` 中的 `rowspan` 参数
   - 该表格已支持跨页功能
   - 后续修改可考虑将该表格封装为一个函数
-- 如果希望向开题报告评审表内填入内容，可手动修改函数 `mes_proposal_inspect`
+- 如果希望向开题报告评审表内填入内容，可手动修改函数 `mse_proposal_inspect`
 
 = 国内外研究现状
 == XXXX
