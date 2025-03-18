@@ -1,6 +1,6 @@
 // #import "cs-template.typ": *
 #import "cse-template.typ": *
-#import "@preview/codelst:2.0.0": sourcecode
+#import "@preview/codelst:2.0.2": sourcecode
 #show: setup-lovelace
 
 #let algorithm = algorithm.with(supplement: "算法")
