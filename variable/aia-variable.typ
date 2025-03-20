@@ -1,4 +1,5 @@
 #import "../fonts/font-def.typ": *
+#import "../utilities/indent-funs.typ": empty_par
 
 // aia院风格中文摘要
 #let aia_zh_abstract_page(abstract, keywords: ()) = {
@@ -127,4 +128,22 @@
     ]
     #pagebreak()
   ]
+}
+
+#let aia_acknowledgement(body) = {
+  // 这个取消目录里的 numbering
+  set heading(level: 1, numbering: none)
+  show <_thx>: {
+    // 这个取消展示时的 numbering
+    set heading(level: 1, numbering: none)
+    set align(center)
+    set text(weight: "bold", font: heiti, size: 18pt)
+
+    "致谢"
+  } + empty_par()
+
+  
+  [= 致谢 <_thx>]
+
+  body
 }
