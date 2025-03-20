@@ -11,6 +11,7 @@
 #import "pages/references.typ": _set_references
 #import "pages/paper-cover.typ": paper_cover
 #import "pages/paper-pages.typ": *
+#import "pages/appendix.typ": *
 
 #import "utilities/three-line-table.typ": three_line_table
 #import "utilities/indent-funs.typ": *
