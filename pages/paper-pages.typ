@@ -17,7 +17,7 @@
 #let _set_paper_page_par(body) = {
     set text(font: songti, 12pt)
     set par(justify: true, leading: 1.24em, first-line-indent: 2em)
-    show par: set block(spacing: 1.24em)
+    set par(spacing: 1.24em)
 
     body
 }
@@ -50,9 +50,11 @@
         grid(
             columns: (5fr, 1fr, 5fr),
             line(length: 100%, stroke: 0.7pt),
-            text(font: songti, 10pt, baseline: -3pt, 
-            counter(page).display("I")
-            ),
+            context {
+                    text(font: songti, 10pt, baseline: -3pt, 
+                        counter(page).display("I")
+                    )
+                },
             line(length: 100%, stroke: 0.7pt)
         )
         }
@@ -70,9 +72,11 @@
         grid(
             columns: (5fr, 1fr, 5fr),
             line(length: 100%, stroke: 0.7pt),
-            text(font: songti, 10pt, baseline: -3pt, 
-            counter(page).display("1")
-            ),
+            context {
+                    text(font: songti, 10pt, baseline: -3pt, 
+                        counter(page).display("1")
+                    )
+                },
             line(length: 100%, stroke: 0.7pt)
         )
         }
