@@ -44,7 +44,7 @@
 // 摘要部分页脚
 #let _set_paper_page_footer_pre(body) = {
     set page(
-        footer: {
+        footer: context {
         set align(center)
         
         grid(
@@ -66,7 +66,7 @@
 // 正文部分页脚
 #let _set_paper_page_footer_main(body) = {
     set page(
-        footer: {
+        footer: context {
         set align(center)
         
         grid(
