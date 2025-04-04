@@ -211,7 +211,11 @@
             columns: (5fr, 1fr, 5fr),
             line(length: 100%, stroke: 0.7pt + rgb(168, 193, 223)),
             text(font: songti, 10pt, baseline: -3pt, 
-            counter(page).display("1")
+            context {
+                    text(font: songti, 10pt, baseline: -3pt, 
+                        counter(page).display("1")
+                    )
+            },
             ),
             line(length: 100%, stroke: 0.7pt + rgb(168, 193, 223))
         )
@@ -246,9 +250,6 @@
     align(left + top)[
     #if with_annotation [
       #let huawenkaiti = ("Timse New Roman", "STKaiti")
-      #text(size: 10.5pt, fill: red, font:huawenkaiti)[
-        #h(0.1em)（用蓝、黑钢笔手写或小4号宋体字编辑，签名必须手写。可加页，A4纸双面打印）
-        ]
       ]
     ]
 
