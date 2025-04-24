@@ -29,7 +29,7 @@
         set text(font: songti, 10.5pt, baseline: 8pt, spacing: 3pt)
         set align(center)
         if not anonymous {
-            [华 中 科 技 大 学 毕 业 设 计 (论 文)]
+            [华 中 科 技 大 学 本 科 毕 业 设 计 (论 文)]
         } else {
             [█████████████████████████]
         }

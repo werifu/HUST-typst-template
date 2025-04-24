@@ -74,7 +74,7 @@
   // 整体页眉
   show: _set_paper_page_header.with(anonymous: anonymous)
   // 目录与摘要的页脚
-  show: _set_paper_page_footer_pre(color:"#a8c1df")[]
+  show: _set_paper_page_footer_pre.with(color:"#a8c1df")
   // 整体段落与页面设置
   show: _set_paper_page_par
 
@@ -94,7 +94,7 @@
   /* 正文 */
 
   // 正文的页脚
-  show: _set_paper_page_footer_main(color:"#a8c1df")[]
+  show: _set_paper_page_footer_main.with(color:"#a8c1df")
 
   counter(page).update(1)
 
