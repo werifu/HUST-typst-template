@@ -26,7 +26,7 @@
 #let _set_paper_page_header(anonymous: false, body) = {
     set page(
         header: {
-        set text(font: songti, 10pt, baseline: 8pt, spacing: 3pt)
+        set text(font: songti, 10.5pt, baseline: 8pt, spacing: 3pt)
         set align(center)
         if not anonymous {
             [华 中 科 技 大 学 毕 业 设 计 (论 文)]
@@ -49,13 +49,13 @@
         
         grid(
             columns: (5fr, 1fr, 5fr),
-            line(length: 100%, stroke: 0.7pt),
+            box(width: 100%,height: 0.7pt,fill: rgb("#4f81bd")),
             context {
                     text(font: songti, 10pt, baseline: -3pt, 
                         counter(page).display("I")
                     )
                 },
-            line(length: 100%, stroke: 0.7pt)
+            box(width: 100%,height: 0.7pt,fill: rgb("#4f81bd"))
         )
         }
     )
@@ -71,13 +71,13 @@
         
         grid(
             columns: (5fr, 1fr, 5fr),
-            line(length: 100%, stroke: 0.7pt),
+            box(width: 100%,height: 0.7pt,fill: rgb("#4f81bd")),
             context {
                     text(font: songti, 10pt, baseline: -3pt, 
                         counter(page).display("1")
                     )
                 },
-            line(length: 100%, stroke: 0.7pt)
+            box(width: 100%,height: 0.7pt,fill: rgb("#4f81bd"))
         )
         }
     )
