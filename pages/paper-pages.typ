@@ -42,20 +42,20 @@
 }
 
 // 摘要部分页脚
-#let _set_paper_page_footer_pre(body) = {
+#let _set_paper_page_footer_pre(color:"#000000",body) = {
     set page(
         footer: context {
         set align(center)
         
         grid(
             columns: (5fr, 1fr, 5fr),
-            box(width: 100%,height: 0.7pt,fill: rgb("#4f81bd")),
+            box(width: 100%,height: 0.7pt,fill: rgb(color)),
             context {
                     text(font: songti, 10pt, baseline: -3pt, 
                         counter(page).display("I")
                     )
                 },
-            box(width: 100%,height: 0.7pt,fill: rgb("#4f81bd"))
+            box(width: 100%,height: 0.7pt,fill: rgb(color))
         )
         }
     )
@@ -64,20 +64,20 @@
 }
 
 // 正文部分页脚
-#let _set_paper_page_footer_main(body) = {
+#let _set_paper_page_footer_main(color:"#000000",body) = {
     set page(
         footer: context {
         set align(center)
         
         grid(
             columns: (5fr, 1fr, 5fr),
-            box(width: 100%,height: 0.7pt,fill: rgb("#4f81bd")),
+            box(width: 100%,height: 0.7pt,fill: rgb(color)),
             context {
                     text(font: songti, 10pt, baseline: -3pt, 
                         counter(page).display("1")
                     )
                 },
-            box(width: 100%,height: 0.7pt,fill: rgb("#4f81bd"))
+            box(width: 100%,height: 0.7pt,fill: rgb(color))
         )
         }
     )
