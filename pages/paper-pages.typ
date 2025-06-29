@@ -3,84 +3,85 @@
 
 // 页面大小
 #let _set_paper_page_size(body) = {
-    set page(paper: "a4", margin: (
-        top: 2.5cm,
-        bottom: 2.5cm,
-        left: 3cm,
-        right: 3cm
-    ))
+  set page(
+    paper: "a4",
+    margin: (
+      top: 2.5cm,
+      bottom: 2.5cm,
+      left: 3cm,
+      right: 3cm,
+    ),
+  )
 
-    body
+  body
 }
 
 // 页面布局
 #let _set_paper_page_par(body) = {
-    set text(font: songti, 12pt)
-    set par(justify: true, leading: 1.24em, first-line-indent: 2em)
-    set par(spacing: 1.24em)
+  set text(font: songti, 12pt)
+  set par(justify: true, leading: 1.24em, first-line-indent: (amount: 2em, all: true), spacing: 1.24em)
 
-    body
+  // set par(justify: true, leading: 1.24em,  first-line-indent: 2em)
+  // set par(spacing: 1.24em)
+
+  body
 }
 
 // 页眉
 #let _set_paper_page_header(anonymous: false, body) = {
-    set page(
-        header: {
-        set text(font: songti, 10pt, baseline: 8pt, spacing: 3pt)
-        set align(center)
-        if not anonymous {
-            [华 中 科 技 大 学 毕 业 设 计 (论 文)]
-        } else {
-            [█████████████████████████]
-        }
-        
-        line(length: 100%, stroke: 0.7pt)
-        }
-    )
+  set page(
+    header: {
+      set text(font: songti, 10pt, baseline: 8pt, spacing: 3pt)
+      set align(center)
+      if not anonymous {
+        [华 中 科 技 大 学 毕 业 设 计 (论 文)]
+      } else {
+        [█████████████████████████]
+      }
 
-    body
+      line(length: 100%, stroke: 0.7pt)
+    },
+  )
+
+  body
 }
 
 // 摘要部分页脚
 #let _set_paper_page_footer_pre(body) = {
-    set page(
-        footer: context {
-        set align(center)
-        
-        grid(
-            columns: (5fr, 1fr, 5fr),
-            line(length: 100%, stroke: 0.7pt),
-            context {
-                    text(font: songti, 10pt, baseline: -3pt, 
-                        counter(page).display("I")
-                    )
-                },
-            line(length: 100%, stroke: 0.7pt)
-        )
-        }
-    )
+  set page(
+    footer: context {
+      set align(center)
 
-    body
+      grid(
+        columns: (5fr, 1fr, 5fr),
+        line(length: 100%, stroke: 0.7pt + color.rgb(90, 128, 184)),
+        context {
+          text(font: songti, 10pt, baseline: -3pt, counter(page).display("I"), weight: "bold")
+        },
+        line(length: 100%, stroke: 0.7pt + color.rgb(90, 128, 184)),
+      )
+    },
+  )
+
+  body
 }
 
 // 正文部分页脚
 #let _set_paper_page_footer_main(body) = {
-    set page(
-        footer: context {
-        set align(center)
-        
-        grid(
-            columns: (5fr, 1fr, 5fr),
-            line(length: 100%, stroke: 0.7pt),
-            context {
-                    text(font: songti, 10pt, baseline: -3pt, 
-                        counter(page).display("1")
-                    )
-                },
-            line(length: 100%, stroke: 0.7pt)
-        )
-        }
-    )
+  set page(
+    footer: context {
+      set align(center)
 
-    body
+      grid(
+        columns: (5fr, 1fr, 5fr),
+        line(length: 100%, stroke: 0.7pt + color.rgb(90, 128, 184)),
+        context {
+          text(font: songti, 10pt, baseline: -3pt, counter(page).display("1"), weight: "bold")
+        },
+        line(length: 100%, stroke: 0.7pt + color.rgb(90, 128, 184)),
+      )
+    },
+  )
+
+  body
 }

@@ -1,6 +1,35 @@
 #import "../fonts/font-def.typ": *
+#import "@preview/tablem:0.2.0": tablem, three-line-table
 #import "../utilities/indent-funs.typ": empty_par
 
+#let _set_paper_page_size(body) = {
+    set page(paper: "a4", margin: (
+        top: 2.5cm,
+        bottom: 2cm,
+        left: 3cm,
+        right: 3cm
+    ))
+
+    body
+}
+// 页眉
+#let _set_paper_page_header(anonymous: false, body) = {
+    set page(
+        header: {
+        set text(font: songti, 10.5pt, baseline: 8pt, spacing: 6pt, weight: 600)
+        set align(center)
+        if not anonymous {
+            [华 中 科 技 大 学 毕 业 设 计 (论 文)]
+        } else {
+            [█████████████████████████]
+        }
+        
+        line(length: 100%, stroke: 0.7pt)
+        }
+    )
+
+    body
+}
 // aia院风格中文摘要
 #let aia_zh_abstract_page(abstract, keywords: ()) = {
   set heading(level: 1, numbering: none)
@@ -39,7 +68,7 @@
     #text(weight: "bold", font: heiti, size: 12pt)[
       Key Words: 
     ]
-    #keywords.join(", ")
+    #keywords.join("; ")
   ]
 }
 
@@ -146,4 +175,57 @@
   [= 致谢 <_thx>]
 
   body
+}
+
+#let aia_chinese_outline() = {
+  align(center)[
+    #text(font: heiti, size: 18pt, "目　　录")
+  ]
+
+  set text(font: songti, size: 12pt)
+  // 临时取消目录的首行缩进
+  set par(leading: 1.24em, first-line-indent: 0pt)
+  context {
+    let loc = here()
+    let elements = query(heading.where(outlined: true))
+    for el in elements {
+      // 计算机学院要求不出现三级以上标题
+      if el.level > 3 {
+        continue
+      }
+
+      // 是否有 el 位于前面，前面的目录中用拉丁数字，后面的用阿拉伯数字
+      let before_toc = query(heading.where(outlined: true).before(loc)).find((one) => {one.body == el.body}) != none
+      let page_num = if before_toc {
+        numbering("I", counter(page).at(el.location()).first())
+      } else {
+        counter(page).at(el.location()).first()
+      }
+
+      link(el.location())[#{
+        // acknoledgement has no numbering
+        let chapt_num = if el.numbering != none {
+          numbering(el.numbering, ..counter(heading).at(el.location()))
+        } else {none}
+
+        if el.level == 1 {
+          set text(weight: "bold")
+          if chapt_num == none {} else {
+            chapt_num
+            "　　"
+          }
+          el.body
+        } else {
+          chapt_num
+          "　"
+          el.body
+        }
+      }]
+
+      // 填充 ......
+      box(width: 1fr, h(0.5em) + box(width: 1fr, repeat[.]) + h(0.5em))
+      [#page_num]
+      linebreak()
+    }
+  }
 }

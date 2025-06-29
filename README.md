@@ -8,8 +8,6 @@
 
 - 民间模板，存在不被认可风险
   - 作者用此模板已成功从网安学院毕业
-- 有部分难以短期解决的问题：
-  - 无伪粗体：暂时无法解决，但是标题所需的黑体粗体在打印出来的情况下几乎看不出区别
 
 ## 什么是 typst
 
@@ -29,12 +27,18 @@
 
 快速浏览效果：[查看sample.pdf](./sample.pdf)，样例论文源码：[查看sample.typ](./sample.typ)
 
-### 本地编辑（推荐）
+### 使用 Visual Studio Code 本地编辑（推荐）
+
+1. 下载[`Tinymist Typst`](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist)插件可以实现语法提示以及实时预览( Ctrl+K V 或者直接在文件下方点击preview)
+2. clone 本仓库
+3. 按本仓库中的 sample.typ 照葫芦画瓢即可，sample.typ 既是样例也是说明书
+
+### 本地编辑
 
 1. 下载对应平台的 typst：https://github.com/typst/typst/releases 记得先看看它的 README
 2. clone 本仓库
 3. 按本仓库中的 sample.typ 照葫芦画瓢即可，sample.typ 既是样例也是说明书
-4. 在本项目目录里，命令行执行 `typst watch xxx.typ` 的命令即可编译同名 pdf 文件，而且一旦更新就会增量编译，推荐在 VSCode 中编辑，下载 `Typst LSP` 插件获得语法提示，使用 [`Typst Preview`](https://github.com/enter-tainer/typst-preview-vscode) 插件可以实现文本和预览之间的快速跳转与实时预览。
+4. 在本项目目录里，命令行执行 `typst watch xxx.typ` 的命令即可编译同名 pdf 文件，而且一旦更新就会增量编译。
 
 
 ### 线上编辑（不推荐）
@@ -54,7 +58,9 @@ https://typst.app/project/rqTPs502DAhLTQctaUmbtn
 
 该模板仍需完善，有一定肉眼排版成分，所以有可能不完全符合华科排版要求，如果遇到不对的间距、字体等请提交 issue 说明，也欢迎 pull request 贡献。
 
-不同学院的模版不太一致，因此在原网安学院的模版上稍加修改得到了计算机学院的模版，如果使用**计算机学院**的模版，请在 `sample.typ` 中选择导入`cs-template.typ` 
+不同学院的模版不太一致，因此在原网安学院的模版上稍加修改得到了计算机学院的模版。
+- 如果使用**计算机学院**的模版，请在 `sample.typ` 中选择导入`cs-template.typ` 
+- 如果使用**人工智能与自动化学院**的模版，请在 `sample.typ` 中选择导入`aia-template.typ` 
 
 **Help Wanted** 笔者已毕业跑路，无法勤快维护，希望能有对本项目有兴趣的人参与，可做的事情还有很多:)
 

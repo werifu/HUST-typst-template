@@ -13,8 +13,9 @@
 #import "pages/paper-pages.typ": *
 #import "pages/appendix.typ": *
 
-#import "utilities/three-line-table.typ": three_line_table
-#import "utilities/indent-funs.typ": *
+// #import "utilities/three-line-table.typ": three_line_table
+#import "@preview/tablem:0.2.0": tablem, three-line-table
+// #import "utilities/indent-funs.typ": *
 #import "utilities/bib-cite.typ": *
 #import "utilities/set-heading.typ": _set_heading
 #import "utilities/set-figure.typ": _set_figure
@@ -92,7 +93,7 @@
   pagebreak()
 
   // 目录
-  chinese_outline()
+  aia_chinese_outline()
 
   /* 正文 */
 

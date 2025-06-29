@@ -1,11 +1,12 @@
 // #import "cs-template.typ": *
-#import "cse-template.typ": *
+#import "aia-template.typ": *
+// #import "cse-template.typ": *
 #import "@preview/codelst:2.0.2": sourcecode
 #show: setup-lovelace
 
 #let algorithm = algorithm.with(supplement: "算法")
 
-
+#set enum(numbering: n => text(12.5pt,baseline: 0.5pt)[#n.])  // 中文数字列表对齐
 
 #show: project.with(
   anonymous: false,
@@ -119,40 +120,58 @@ typst 是最新最热的标记文本语言，定位与 LaTeX 类似，具有极�
   caption: "芝士样表"
 ) <tbl1>
 
+// #figure(
+//   three_line_table(
+//     (
+//     ("Country List", "Country List", "Country List"),
+//     ("Country Name or Area Name", "ISO ALPHA Code", "ISO ALPHA"),
+//     ("Afghanistan", "AF", "AFT"),
+//     ("Aland Islands", "AX", "ALA"),
+//     ("Albania", "AL", "ALB"),
+//     ("Algeria", "DZ", "DZA"),
+//     ("American Samoa", "AS", "ASM"),
+//     ("Andorra", "AD", "AND"),
+//     ("Angola", "AP", "AGO"),
+//   )),
+//   kind: table,
+//   caption: "三线表示例"
+// )
+
+// #figure(
+//   three_line_table(
+//     (
+//     ("Country List", "Country List", "Country List", "Country List"),
+//     ("Country Name or Area Name", "ISO ALPHA 2 Code", "ISO ALPHA 3", "8"),
+//     ("Afghanistan", "AF", "AFT", "7"),
+//     ("Aland Islands", "AX", "ALA", "6"),
+//     ("Albania", "AL", "ALB", "5"),
+//     ("Algeria", "DZ", "DZA", "4"),
+//     ("American Samoa", "AS", "ASM", "3"),
+//     ("Andorra", "AD", "AND", "2"),
+//     ("Angola", "AP", "AGO", "1"),
+//   )),
+//   kind: table,
+//   caption: "三线表示例2"
+// )
 #figure(
-  three_line_table(
-    (
-    ("Country List", "Country List", "Country List"),
-    ("Country Name or Area Name", "ISO ALPHA Code", "ISO ALPHA"),
-    ("Afghanistan", "AF", "AFT"),
-    ("Aland Islands", "AX", "ALA"),
-    ("Albania", "AL", "ALB"),
-    ("Algeria", "DZ", "DZA"),
-    ("American Samoa", "AS", "ASM"),
-    ("Andorra", "AD", "AND"),
-    ("Angola", "AP", "AGO"),
-  )),
-  kind: table,
-  caption: "三线表示例"
+  tablem[
+  | *Name* | *Location* | *Height* | *Score* |
+  | ------ | ---------- | -------- | ------- |
+  | John   | Second St. | 180 cm   | 5       |
+  | Wally  | Third Av.  | 160 cm   | 10      |
+],
+caption: "表 示例"
 )
 
 #figure(
-  three_line_table(
-    (
-    ("Country List", "Country List", "Country List", "Country List"),
-    ("Country Name or Area Name", "ISO ALPHA 2 Code", "ISO ALPHA 3", "8"),
-    ("Afghanistan", "AF", "AFT", "7"),
-    ("Aland Islands", "AX", "ALA", "6"),
-    ("Albania", "AL", "ALB", "5"),
-    ("Algeria", "DZ", "DZA", "4"),
-    ("American Samoa", "AS", "ASM", "3"),
-    ("Andorra", "AD", "AND", "2"),
-    ("Angola", "AP", "AGO", "1"),
-  )),
-  kind: table,
-  caption: "三线表示例2"
+  three-line-table[
+  | *Name* | *Location* | *Height* | *Score* |
+  | ------ | ---------- | -------- | ------- |
+  | John   | Second St. | 180 cm   | 5       |
+  | Wally  | Third Av.  | 160 cm   | 10      |
+],
+caption: "三线表示例"
 )
-
 
 == 公式
 
@@ -182,12 +201,12 @@ $ x < y => x gt.eq.not y $ <->
 
 - 无序列表2: 2
 
-#indent()列表后的正文，应当有缩进。这里加入一个 \#indent() 函数来手动生成段落缩进，是因为在目前的 typst 设计里，按英文排版的习惯，连续段落里的第一段不会缩进，也包括各种列表。
+列表后的正文，应当有缩进。这里加入一个 \#indent() #highlight()[(在Typst 0.13后利用`set par(first-line-indent: (all: true)`，即可自动实现段落缩进)] 函数来手动生成段落缩进，是因为在目前的 typst 设计里，按英文排版的习惯，连续段落里的第一段不会缩进，也包括各种列表。
 
 1. 有序列表1
 2. 有序列表2
 
-列表后的正文，应当有缩进，但是这里没有，请自己在段首加上\#indent()
+列表后的正文，应当有缩进。
 
 想自己定义可以自己set numbering，建议用 \#[] 包起来保证只在该作用域内生效：
 
@@ -248,7 +267,7 @@ reference link: https://typst.app/universe/package/lovelace
 
 == 文献引用
 
-引用支持 LaTeX Bib 的格式，也支持更简单好看的 yml 来配置（尚未流行，推荐优先使用`.bib`）在引用时使用`#bib_cite(<tag>)`，像这样#bib_cite(<impagliazzo2001problems>,<Burckhardt:2013>)以获得右上的引用标注#bib_cite(<刘星2014恶意代码的函数调用图相似性分析>)#bib_cite(<papadimitriou1998combinatorial>)。
+// 引用支持 LaTeX Bib 的格式，也支持更简单好看的 yml 来配置（尚未流行，推荐优先使用`.bib`）在引用时使用`#bib_cite(<tag>)`，像这样#bib_cite(<impagliazzo2001problems>,<Burckhardt:2013>)以获得右上的引用标注#bib_cite(<刘星2014恶意代码的函数调用图相似性分析>)#bib_cite(<papadimitriou1998combinatorial>)。
 
 记得在最后加入\#references("path/to/ref.bib")函数的调用来生成参考文献。
 
